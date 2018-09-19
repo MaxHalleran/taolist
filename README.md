@@ -22,3 +22,13 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+
+## Devlog
+
+v0.0.2 - Database skeleton constructed
+
+v0.0.1 - File structure created
+
+## Focus
+
+We are currently working on setting up the routes, the database and styling the landing page.
