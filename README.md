@@ -1,19 +1,14 @@
-# Node Skeleton
+# Tao List Smart ToDo List v0.0.1
 
-## Project Setup
+## Application Setup
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+1. Clone this repository onto your computer
+2. Follow the instructions bellow
 
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
+2. Update the .env file with your correct local information username and password are 'development' and database is taolistdb. port is 5432. You might have to create the database in psql before it can be accessed.
 3. Install dependencies: `npm i`
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Run migrations: `npm run knex migrate:latest`
