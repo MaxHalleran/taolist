@@ -1,0 +1,39 @@
+$d: 80vmin;
+$line: ;
+
+body {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+    overflow: hidden;
+    height: 100vh;
+    background: lightslategray;
+}
+
+.☯ {
+    display: flex;
+    align-items: center;
+    width: $d; height: $d;
+    border-radius: 50%;
+    background: $line,
+        linear-gradient(black 50%, white 0);
+
+    &:before, &:after {
+        flex: 1;
+        border: solid $d/6 transparent;
+        height: $d/6;
+        border-radius: 50%;
+        background: $line,
+            linear-gradient(black, black) content-box,
+            linear-gradient(white, white) border-box;
+        animation: a1 3s ease-in-out infinite;
+        content: ''
+    }
+
+    &:after {
+        background: $line,
+            linear-gradient(white, white) content-box,
+            linear-gradient(black, black) border-box;
+        animation-name: a2;
+    }
+}
