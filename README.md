@@ -1,4 +1,4 @@
-# Tao List Smart ToDo List v0.0.1
+# Tao List Smart ToDo List v0.0.2
 
 ## Application Setup
 
