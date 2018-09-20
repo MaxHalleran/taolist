@@ -1,0 +1,211 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+ html {
+  box-sizing: border-box;
+}
+/*
+ * Global layout stuff
+ */
+
+body {
+  margin: 0;
+  color: #244751;
+
+}
+main {
+  height: 100vh;
+  background: blue;
+}
+.col {
+  float: left;
+}
+
+.left{
+  width: 25%;
+  height: 100vh;
+  background: rgba(38,38,38,1);
+  background: -moz-linear-gradient(left, rgba(38,38,38,1) 0%, rgba(74,74,74,1) 9%, rgba(82,82,82,1) 24%, rgba(94,94,94,1) 40%, rgba(107,107,107,1) 51%, rgba(120,120,120,1) 61%, rgba(145,145,145,1) 75%, rgba(194,194,194,1) 88%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(38,38,38,1)), color-stop(9%, rgba(74,74,74,1)), color-stop(24%, rgba(82,82,82,1)), color-stop(40%, rgba(94,94,94,1)), color-stop(51%, rgba(107,107,107,1)), color-stop(61%, rgba(120,120,120,1)), color-stop(75%, rgba(145,145,145,1)), color-stop(88%, rgba(194,194,194,1)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(left, rgba(38,38,38,1) 0%, rgba(74,74,74,1) 9%, rgba(82,82,82,1) 24%, rgba(94,94,94,1) 40%, rgba(107,107,107,1) 51%, rgba(120,120,120,1) 61%, rgba(145,145,145,1) 75%, rgba(194,194,194,1) 88%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(left, rgba(38,38,38,1) 0%, rgba(74,74,74,1) 9%, rgba(82,82,82,1) 24%, rgba(94,94,94,1) 40%, rgba(107,107,107,1) 51%, rgba(120,120,120,1) 61%, rgba(145,145,145,1) 75%, rgba(194,194,194,1) 88%, rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(left, rgba(38,38,38,1) 0%, rgba(74,74,74,1) 9%, rgba(82,82,82,1) 24%, rgba(94,94,94,1) 40%, rgba(107,107,107,1) 51%, rgba(120,120,120,1) 61%, rgba(145,145,145,1) 75%, rgba(194,194,194,1) 88%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(to right, rgba(38,38,38,1) 0%, rgba(74,74,74,1) 9%, rgba(82,82,82,1) 24%, rgba(94,94,94,1) 40%, rgba(107,107,107,1) 51%, rgba(120,120,120,1) 61%, rgba(145,145,145,1) 75%, rgba(194,194,194,1) 88%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262626', endColorstr='#ffffff', GradientType=1 );
+}
+.right {
+  width: 25%;
+  height: 100vh;
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(194,194,194,1) 12%, rgba(145,145,145,1) 25%, rgba(120,120,120,1) 39%, rgba(107,107,107,1) 49%, rgba(94,94,94,1) 60%, rgba(82,82,82,1) 76%, rgba(74,74,74,1) 91%, rgba(38,38,38,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(12%, rgba(194,194,194,1)), color-stop(25%, rgba(145,145,145,1)), color-stop(39%, rgba(120,120,120,1)), color-stop(49%, rgba(107,107,107,1)), color-stop(60%, rgba(94,94,94,1)), color-stop(76%, rgba(82,82,82,1)), color-stop(91%, rgba(74,74,74,1)), color-stop(100%, rgba(38,38,38,1)));
+  background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(194,194,194,1) 12%, rgba(145,145,145,1) 25%, rgba(120,120,120,1) 39%, rgba(107,107,107,1) 49%, rgba(94,94,94,1) 60%, rgba(82,82,82,1) 76%, rgba(74,74,74,1) 91%, rgba(38,38,38,1) 100%);
+  background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(194,194,194,1) 12%, rgba(145,145,145,1) 25%, rgba(120,120,120,1) 39%, rgba(107,107,107,1) 49%, rgba(94,94,94,1) 60%, rgba(82,82,82,1) 76%, rgba(74,74,74,1) 91%, rgba(38,38,38,1) 100%);
+  background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(194,194,194,1) 12%, rgba(145,145,145,1) 25%, rgba(120,120,120,1) 39%, rgba(107,107,107,1) 49%, rgba(94,94,94,1) 60%, rgba(82,82,82,1) 76%, rgba(74,74,74,1) 91%, rgba(38,38,38,1) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(194,194,194,1) 12%, rgba(145,145,145,1) 25%, rgba(120,120,120,1) 39%, rgba(107,107,107,1) 49%, rgba(94,94,94,1) 60%, rgba(82,82,82,1) 76%, rgba(74,74,74,1) 91%, rgba(38,38,38,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#262626', GradientType=1 );
+}
+
+.center {
+  width: 50%;
+  height: 100vh;
+  background-color: white;
+} 
+.topdiv{
+  background-color: black;
+  height: 6em;
+}
+
+.topButton{
+  background-color: #636363ad;
+  text-align:center;
+  border-color: #525252;
+  border-style: solid;
+  height: 3em;
+  -webkit-font-smoothing:  subpixel-antialiased;
+  border-radius: 11em;
+  opacity: 1;
+  box-shadow: 0 0 0 .1em rgba(255, 255, 255, 0.6);
+  width: 8em;
+  height: 2.5em;
+}
+.mainHeader{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align:  center;
+  color:  white;
+  margin-top: 0em;
+  /* background-color:  black; */
+}
+.topButtonDiv{
+  background-color: black;
+  height: 6em;
+  margin-top:  -3em;
+}
+#headerbutton1{
+    color: white;
+}
+#headerbutton2{
+    color: white;
+}
+#headerbutton3{
+    color: white;
+    /* background-color:  transparent; */
+}
+#settings{
+  position:fixed;
+  top:40px;
+  right:40px;
+  height:30px
+  }
+#sign-in{
+  position: fixed;
+  top:40px;
+  right: 180px;
+  height: 30px;
+}
+#new-task-button{
+  position: fixed;
+  top:40px;
+  left: 40px;
+  height: 30px;
+}
+
+  .header-order a{
+    display:block;
+    padding:0 15px;
+    font:16px/30px "Compass Sans",Helvetica,sans-serif;
+    color:#fff;
+    background:rgba(125,125,125,.3);
+    box-shadow:0 0 0 1px rgba(125,125,125,.6);
+    border-radius:15px
+    }
+
+  .header-order a#preorder-countdown{
+    width:140px;
+    white-space:nowrap;
+    text-align:center
+    }
+
+  .header-order .hover{
+    position:absolute;
+    top:-2px;
+    left:-2px;
+    width:calc(100% + 4px);
+    height:calc(100% + 4px);
+    overflow:hidden;
+    border-radius:15px;
+    z-index:-1
+    }
+
+    @keyframes headerOrderHover{
+      0%{
+        top:-4px;
+        left:0;
+      }
+      25%{
+        top:calc(100% - 4px);
+        left:0
+      }
+      50%{
+        top:calc(100% - 4px);
+        left:calc(100% - 25px)
+      }
+      75%{
+        top:-4px;
+        left:calc(100% - 10px)
+      }
+      100%{
+        top:-4px;
+        left:0
+      }
+    }
+    @-webkit-keyframes headerOrderHover{
+      0%{
+        top:-4px;
+        left:0;
+      }
+      25%{
+        top:calc(100% - 4px);
+        left:0
+      }
+      50%{
+        top:calc(100% - 4px);
+        left:calc(100% - 25px)
+      }
+      75%{
+        top:-4px;
+        left:calc(100% - 10px)
+      }
+      100%{
+        top:-4px;
+        left:0
+      }
+    }
+
+  .header-order .hover:before{
+    content:"";
+    position:absolute;
+    display:block;
+    width:25px;
+    height:25px;
+    top:0;
+    left:0;
+    background:#fff;
+    -webkit-animation:headerOrderHover linear 1s infinite;
+    animation:headerOrderHover linear 1s infinite;
+    opacity:0
+    }
+
+  .header-order:hover a{
+    background:#000;
+    box-shadow:0 0 0 2px rgba(125,125,125,.2)
+    }
+
+  .header-order:hover .hover:before{
+    opacity:1;
+    transition:.3s
+    }
