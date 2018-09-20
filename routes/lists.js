@@ -1,3 +1,11 @@
+/*
+The program began crashing so in the 'stable' version we commented out app.use('/lists').
+We took the liberty of looking through your code and found some small tweeks you could make.
+And we'll have to break this code up into 2 different routes, one for users and one for lists
+*/
+
+
+// The majority of these requires aren't required as we're passing this router into the server file.
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
@@ -5,8 +13,10 @@ const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const methodOverride = require('method-override');
 
+// PORT is in the .env
 const PORT = 8080;
 
+// are we initializing cookies in the ./lists route?
 // Middleware
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,6 +26,8 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   }
 ));
+
+// Do we need method override if we're using ajax?
 app.use(methodOverride('_method'));
 
 // Helper functions
@@ -46,6 +58,7 @@ function findUser(users, email){
   return user;
 }
 
+// I really like this
 const guestDatabase = {
   guestId: {
     toWatch:[],
@@ -55,6 +68,8 @@ const guestDatabase = {
   }
 }
 
+// I think we could have a '/user/register' for registering. Thumbs up.
+// we could use method chaining here to unify this code.
 app.get('/register', (req, res) => {
   res.render('register');
 })
@@ -63,7 +78,7 @@ app.post("/register", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   const hashedPassword = bcrypt.hashSync(password, 10);
-  
+
   // handle errors
   if (!email || !password) {
     res.status(400).send("400 Error: Email or password was not filled.");
@@ -74,13 +89,14 @@ app.post("/register", (req, res) => {
     }
     else {
       // for new user, save id, username, email, hashedpassword to db
-      
+
       const user_id = generateRandomString();
       req.session.user_id = user_id;
       res.redirect("/lists");
     }
 });
 
+// again, route chaining could be used to unify this code.
 app.get('/login', (req, res) => {
   if (req.session.user_id) {
     res.redirect('/lists');
