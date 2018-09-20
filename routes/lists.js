@@ -1,10 +1,3 @@
-/*
-The program began crashing so in the 'stable' version we commented out app.use('/lists').
-We took the liberty of looking through your code and found some small tweeks you could make.
-And we'll have to break this code up into 2 different routes, one for users and one for lists
-*/
-
-
 // The majority of these requires aren't required as we're passing this router into the server file.
 const express = require('express');
 const app = express();
@@ -16,7 +9,6 @@ const methodOverride = require('method-override');
 // PORT is in the .env
 const PORT = 8080;
 
-// are we initializing cookies in the ./lists route?
 // Middleware
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,7 +19,6 @@ app.use(cookieSession({
   }
 ));
 
-// Do we need method override if we're using ajax?
 app.use(methodOverride('_method'));
 
 // Helper functions
@@ -96,7 +87,6 @@ app.post("/register", (req, res) => {
     }
 });
 
-// again, route chaining could be used to unify this code.
 app.get('/login', (req, res) => {
   if (req.session.user_id) {
     res.redirect('/lists');

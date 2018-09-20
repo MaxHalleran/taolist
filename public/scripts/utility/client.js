@@ -12,3 +12,5 @@ const knex = require('knex')({
 });
 
 module.exports = knex;
+
+// This file is temporary and is most likely not needed.

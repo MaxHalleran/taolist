@@ -3,6 +3,13 @@
 const knex = require('./client');
 
 // These function are used to connect to the database, retrieving information and setting information respectively
+// Functions and their uses/requirements
+// getUser takes a username and returns either {a user object with a user id, username, password and email} or false if they're not in the database
+// saveUser takes a user object and stores it in the database. It needs an object with the fields {username, password, email}
+// logIp takes an ip addres and returns either a true if the ip address visited previously or a false if not.
+// createList will take a name and category (or lack of category) and create a new listCreate
+// getList takes a list id and returns a list, the items in that list and their descriptions
+// need to decide on item functions
 
 // This function creates the functions that we need using the given database
 module.exports = function makeDataHelpers() {
