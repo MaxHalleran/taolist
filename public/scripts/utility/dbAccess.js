@@ -1,7 +1,5 @@
 'use strict';
 
-const knex = require('./client');
-
 // These function are used to connect to the database, retrieving information and setting information respectively
 // Functions and their uses/requirements
 // getUser takes a username and returns either {a user object with a user id, username, password and email} or false if they're not in the database
@@ -12,25 +10,104 @@ const knex = require('./client');
 // need to decide on item functions
 
 // This function creates the functions that we need using the given database
-module.exports = function makeDataHelpers() {
+module.exports = function (knex) {
   return {
 
-    // The first two functions are run against the user table. The first returns the information about a specified user, the second creates a user.
+/** getUser
+* takes a username and returns all the information about that user in object format.
+* @param {Object}username
+*/
+  getUser: function getUser(username) {
+    return new Promise((resolve, reject) => {
+      console.log(username);
+      knex
+        .select('*')
+        .from('user')
+        .then(results => results);
 
-    /** getUser
-    * takes a username and returns all the information about that user in object format.
-    * @param {Object}username
-    */
-    getUser: function getUser(username) {
+        resolve();
+    });
+  },
 
-    },
+  /** saveUser
+  * takes a user object and creates a new user in the Database
+  * @param {Object}user
+  */
 
-    saveUser: function saveUser(response) {
+  saveUser: function saveUser(user) {
 
-    }
+  },
 
-  };
+  /** changeUser
+  * takes a userid and a value, an object contain key value pairs, and changes the users settings
+  * @param {Number}userid
+  * @param {Object}value
+  */
+  changeUser: function changeUser(userid, value) {
+
+  },
+
+  /** logIp
+  * takes an ip address and returns true if the ip has been recorded previously or false if otherwise
+  * @param {String}ip
+  */
+  logIp: function logIp(ip) {
+
+  },
+
+  /** createList
+  * takes a name and a category and makes a list in the database
+  * @param {String}listName
+  * @param {String}category
+  */
+  createList: function createList(listName, category) {
+
+  },
+
+  /** getList
+  * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
+  * @param {Number}listId
+  */
+  getList: function getList(listid) {
+
+  },
+
+  /** changeList
+  * takes a listid and an object with keys of 'name' and 'category' and change those values inside the Database
+  * @param {Number}listId
+  * @param {Object}changeUser
+  */
+  changeList: function changeList(listid, changes) {
+
+  },
+
+  /** deleteList
+  * takes a list id and deletes the list and all of the items stored within it
+  * @param {Number}listId
+  */
+  deleteList: function deleteList(listId) {
+
+  },
+
+  /** createItem
+  * takes an item name and an array of itemDescription's and adds that into the Database
+  * @param {String}itemName
+  * @param {Array}itemDescription
+  */
+  createItem: function createItem(itemName, itemDescription) {
+
+  },
+
+  /** deleteItem
+  * takes an item id and changes it's state to 'completed'. Does not destroy the item,  just changes the state.
+  * @param {Number}itemid
+  */
+  deleteItem: function deleteItem(itemid) {
+
+  },
 };
+};
+
 //
 // const clientQuery = function clientQuery(input) {
 //   knex
@@ -57,8 +134,6 @@ module.exports = function makeDataHelpers() {
 //     });
 //   return true;
 // };
-//
-// module.exports = clientQuery;
 //
 //
 // // Saves a tweet to `db`

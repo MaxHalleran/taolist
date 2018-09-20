@@ -1,6 +1,6 @@
 {
   "name": "taolist",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "## Project Setup",
   "main": "server.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",

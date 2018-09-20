@@ -1,32 +1,40 @@
-// The majority of these requires aren't required as we're passing this router into the server file.
+'use strict';
+
 const express = require('express');
-const app = express();
-const bodyParser = require("body-parser");
-const cookieSession = require('cookie-session');
-const bcrypt = require('bcrypt');
-const methodOverride = require('method-override');
+
+const router = express.Router();
+
+// const bcrypt = require('bcrypt');
+
+// The majority of these requires aren't required as we're passing this router into the server file.
+// const app = express();
+// const bodyParser = require("body-parser");
+// const cookieSession = require('cookie-session');
+//
+// const methodOverride = require('method-override');
 
 // PORT is in the .env
-const PORT = 8080;
+// const PORT = 8080;
 
 // Middleware
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieSession({
-  name: 'session',
-  keys: ['lighthouse-labs'],
-  maxAge: 24 * 60 * 60 * 1000,
-  }
-));
-
-app.use(methodOverride('_method'));
+// app.set('view engine', 'ejs');
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['lighthouse-labs'],
+//   maxAge: 24 * 60 * 60 * 1000,
+//   }
+// ));
+//
+// app.use(methodOverride('_method'));
 
 // Helper functions
-function generateRandomString(){
-  return  Math.random().toString(20).substring(2, 8);
-}
+// function generateRandomString(){
+//   return  Math.random().toString(20).substring(2, 8);
+// }
 
 // try to match email and password from users table
+/*
 function checkLogInStatus(email, password, users){
   if (!email || !password) {
       return { logInStatus: "400 Error: Email or password was not filled."}
@@ -41,7 +49,7 @@ function checkLogInStatus(email, password, users){
           return {logInStatus: "Login successfully"}
       }
   }
-
+*/
 
 // find user from users table based on email
 function findUser(users, email){

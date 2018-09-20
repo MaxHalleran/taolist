@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id');
     table.integer('user_id');
     table.string('name');
+    table.string('category');
 
     table.foreign('user_id').references('id').inTable('user');
   });
