@@ -11,7 +11,7 @@
 $(() => {
   console.log('ajax fired');
   $.ajax({
-    method: 'POST',
+    method: 'GET',
     url: '/api/user',
     data: {
       username: 'Alice',

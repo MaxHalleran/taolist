@@ -13,31 +13,30 @@ module.exports = (dbAccess) => {
       res.status(200);
     })
     .post((req, res) => {
-      const email = req.body.email;
-      const password = req.body.password;
-      const username = req.body.username;
-      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+      const user = {
+      email: req.body.email,
+      username: req.body.username,
+      password =    bcrypt.hashSync(req.body.password, 10),
+      }
+      console.log(user);
 
       // handle errors
-      if (!email || !password || !username) {
+      if (!user.email || !user.password || !user.username) {
         res.status(400).send('400 Error: Email or password was not filled.');
       } else {
         // try to find user based on email, return user if found
-        dbAccess.getEmail(email)
+        dbAccess.getEmail(user.email)
           .then((realUser) => {
-            if (!realuser.length === 0) {
+            console.log('What is realuser?', realUser.length);
+            if (!realUser.length === 0) {
               console.log('Email taken');
               res.status(400).send('400 Error: Email has already registered.');
             }
             // register user
+            dbAccess.saveUser(user);
+            res.status(200);
           })
-      }; if (user) {
-        res.status(400).send('400 Error: Email already exists. ')
-      }
-      else {
-        // for new user save username, email, hashedpassword to db then retrieve the db id for the user and set their cookies
-        res.redirect('/lists');
-      }
+      };
     });
 
   return router;

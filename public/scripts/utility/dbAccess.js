@@ -26,7 +26,7 @@ module.exports = function dbAccess(knex) {
 
     getEmail: (email) => {
       return knex
-        .select('*')
+        .select('email')
         .from('user')
         .where('email', email)
     },
@@ -36,13 +36,13 @@ module.exports = function dbAccess(knex) {
     * @param {Object}user
     */
 
-    saveUser: function saveUser(user) {
+    saveUser: function saveUser(newUser) {
       knex
         .from('user')
         .insert({
-          username: user.username,
-          password: user.password,
-          email: user.email,
+          username: newUser.username,
+          password: newUser.password,
+          email: newUser.email,
         });
     },
 
