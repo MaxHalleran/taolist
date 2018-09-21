@@ -47,6 +47,10 @@ app.use('/api/item', itemRoute(knex));
 app.use('/api/register', registerRoute(knex));
 // app.use("/lists", userRoutes(knex));
 
+app.post('/logout', (req, res) => {
+  // gonna log out the user.
+});
+
 // Home page
 app.get('/', (req, res) => {
   res.render('index');

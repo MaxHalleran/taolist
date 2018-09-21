@@ -12,7 +12,7 @@
 $(() => {
   console.log('ajax fired');
   $.ajax({
-    method: 'GET',
+    method: 'POST',
     url: '/api/user',
   }).done((users) => {
     console.log('hi')

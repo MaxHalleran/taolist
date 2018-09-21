@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.integer('table_id');
 
     table.foreign('user_id').references('id').inTable('user');
-    table.foreign('table_id').references('id').inTable('table');
+    table.foreign('table_id').references('id').inTable('list');
   });
 };
 

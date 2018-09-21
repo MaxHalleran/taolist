@@ -17,13 +17,11 @@ module.exports = function dbAccess(knex) {
 * takes a username and returns all the information about that user in object format.
 * @param {Object}username
 */
-    getUser: function getUser(username) {
-      console.log(username);
-      knex
+    getUser: (username) => {
+      return knex
         .select('*')
         .from('user')
         .where('username', username)
-        .then(results => results);
     },
 
     /** saveUser

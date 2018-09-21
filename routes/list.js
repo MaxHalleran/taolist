@@ -4,6 +4,8 @@ const express = require('express');
 
 const router = express.Router();
 
+module.exports = (knex) => {
+
 // const bcrypt = require('bcrypt');
 
 // The majority of these requires aren't required as we're passing this router into the server file.
@@ -60,43 +62,45 @@ function checkLogInStatus(email, password, users){
 // I think we could have a '/user/register' for registering. Thumbs up.
 // we could use method chaining here to unify this code.
 
-app.get('/login', (req, res) => {
-  if (req.session.user_id) {
-    res.redirect('/lists');
-  } else {
-    res.render('login');
-  }
-});
+// app.get('/login', (req, res) => {
+//   if (req.session.user_id) {
+//     res.redirect('/lists');
+//   } else {
+//     res.render('login');
+//   }
+// });
 
-app.post('/login', (req, res) => {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
+// app.post('/login', (req, res) => {
+//   const username = req.body.username;
+//   const email = req.body.email;
+//   const password = req.body.password;
+//
+//   let status = checkLogInStatus(email, password, users);
+//   if(status.logInStatus !== "Login successfully"){
+//       let templateVars = {
+//           status: status
+//         };
+//       res.render("logInError", templateVars);
+//     } else {
+//       const user = findUser(users, email);
+//       // find user_id from users table
+//       req.session.user_id = users.user_id;
+//       res.redirect("/lists");
+//     }
+// })
+//
+// app.post("/logout", (req, res) => {
+//   req.session = null;
+//   res.redirect("/login");
+// })
 
-  let status = checkLogInStatus(email, password, users);
-  if(status.logInStatus !== "Login successfully"){
-      let templateVars = {
-          status: status
-        };
-      res.render("logInError", templateVars);
-    } else {
-      const user = findUser(users, email);
-      // find user_id from users table
-      req.session.user_id = users.user_id;
-      res.redirect("/lists");
-    }
-})
+router.route
 
-app.post("/logout", (req, res) => {
-  req.session = null;
-  res.redirect("/login");
-})
-
-app.get('/lists', (req, res) => {
+router.get('/lists', (req, res) => {
   res.json({ });
 })
 
-app.post('/lists', (req, res) => {
+router.post('/lists', (req, res) => {
   const cookie = req.session;
   const item = req.body;
   // for existing user, add item to db
@@ -111,7 +115,7 @@ app.post('/lists', (req, res) => {
   }
 })
 
-app.put('/lists/:id', (req, res) => {
+router.put('/lists/:id', (req, res) => {
   const cookie = req.session;
   const newItem = req.body;
   // for existing user, update item on db
@@ -129,8 +133,11 @@ app.put('/lists/:id', (req, res) => {
   }
 })
 
-app.delete('/lists/:id', (req, res) => {
+router.delete('/lists/:id', (req, res) => {
   const item = req.params.id;
   //delete item on db
   deleteItem();
 })
+
+return router;
+};

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 'use strict';
 
 const express = require('express');
@@ -15,12 +17,20 @@ const guestDatabase = {
 }
 
 module.exports = function userRoutes(dbAccess) {
+  async function awaitFunction() {
+    console.log(await dbAccess.getUser('Alice'));
+  }
+
   router.route('/')
     .get((req, res) => {
       console.log('in get user');
-      res.json(dbAccess.getUser('dave'));
+      let answer;
+      answer = dbAccess.getUser('Charlie')
+        .then((user) => {
+        console.log(user);
+      });
+      // res.json(await dbAccess.getUser('dave'));
       // res.json(dbAccess.getUser());
-
     })
     .post((req, res) => {
       // log in route. Needs to retrieve user info. We'll need the username and password from the user.
@@ -28,6 +38,8 @@ module.exports = function userRoutes(dbAccess) {
       const userpass = req.body.password;
       let isUser;
       // we need to retrieve the users information from the database in order to compare it.
+      awaitFunction();
+      console.log('Later');
     })
     .put((req, res) => {
       // a route to update the users settings.
