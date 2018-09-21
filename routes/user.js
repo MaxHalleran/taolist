@@ -45,10 +45,11 @@ module.exports = function userRoutes(dbAccess) {
       let isUser;
       dbAccess.getUser(username)
         .then((user) => {
-          console.log(user[0].password);
+          console.log("------",user);
+          console.log("=====user[0].pswd", user[0].password);
           if (routeFunction.validateLogin(userpass, user[0].password)) {
             // yay they match
-            // req.session.user_id = user.id;
+            req.session.user_id = user[0].id;
             res.json('the user validation was valid');
           } else {
             // error, they didn't match

@@ -31,6 +31,16 @@ module.exports = (dbAccess) => {
             if (!realUser.length === 0) {
               console.log('Email taken');
               res.status(400).send('400 Error: Email has already registered.');
+            } else {
+              // register user
+              const newUser = {
+                email: req.body.email,
+                username: req.body.username,
+                password: bcrypt.hashSync(req.body.password, 10)
+              }
+              console.log("----newUser", newUser);
+              dbAccess.saveUser(newUser);
+
             }
             // register user
             dbAccess.saveUser(user);
