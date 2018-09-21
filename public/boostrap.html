@@ -13,14 +13,28 @@
       <!-- HEADER BAR START -->
       <div class="container-fluid no-padding">
          <div id="headerrow" class="rowheader">
-            <div class="header-order" id="settings">
-               <a style="pointer-events:none" id="asettings">Settings</a>
-               <div class="hover"></div>
-            </div>
-            <div class="header-order" id="sign-in">
-               <a style="pointer-events:none" id="asign-in">Sign In</a>
-               <div class="hover"></div>
-            </div>
+               <!-- PUT settings -->
+            <form method="PUT" id="settingpost">
+                  <div class="header-order" id="settings">
+                  <a style="pointer-events:none" id="asettings">Settings</a>
+                  <div class="hover"></div>
+                  </div>
+            </form>
+              <!-- POST Sign in -->
+            <form method="POST" id="signingpost">
+                  <div class="header-order" id="sign-in">
+                  <a style="pointer-events:none" id="asign-in">Sign In</a>
+                  <div class="hover"></div>
+                  </div>
+            </form>
+              <!--POST Register-->
+            <form method="POST" id="registerpost">
+                        <div class="header-order" id="register">
+                        <a style="pointer-events:none" id="aregister">Create Account</a>
+                        <div class="hover"></div>
+                        </div>
+            </form>
+              <!-- Create new task -->
             <div class="header-order" id="new-task-button">
                <a style="pointer-events:none" id="anew-task-button">New Task</a>
                <div class="hover"></div>

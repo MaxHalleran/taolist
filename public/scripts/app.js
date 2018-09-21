@@ -8,7 +8,6 @@
 //     }
 //   });
 // });
-
 $(() => {
   console.log('ajax fired');
   $.ajax({
@@ -22,3 +21,29 @@ $(() => {
     }
   });
 });
+
+
+
+$(document).ready(() => {
+
+const $newTaskForm = $('#settings');
+$( "#settings" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+const $settingsForm = $('#sign-in');
+$( "#sign-in" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+const $registerForm = $('#register');
+$( "#register" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+const $newTask = $('#new-task');
+$( "#new-task" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+
+
+});
+
