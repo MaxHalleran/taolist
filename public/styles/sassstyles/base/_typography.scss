@@ -1,0 +1,12 @@
+@import
+  '../shame/shame';
+@font-face {
+    font-family: 'Linux Libertine'; /* normal */
+    src: url('../fonts/linux-libertine/LinLibertine_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.yinsymbol{
+    font-family: Linux Libertine;
+}
