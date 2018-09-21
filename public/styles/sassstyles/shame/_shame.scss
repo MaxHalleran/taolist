@@ -71,9 +71,7 @@ body {
 .header-order{
     z-index:1;
 }
-#asettings{
-    width: 8rem;
-}
+
 #sign-in{
     position:fixed;
     top:40px;
@@ -83,15 +81,16 @@ body {
 #asign-in{
     width: 8rem;
 }
+#asettings{
+    width: 8rem;
+}
 #settings{
     position: fixed;
     top:40px;
     right: 180px;
     height: 30px;
 }
-#anew-task{
-    width: 8rem;
-}
+
 #register{
     position: fixed;
     top:85px;
@@ -101,7 +100,10 @@ body {
 #aregister{
     width: 9rem;
 }
-#new-task{
+#alogout{
+    width: 8rem;
+}
+#logout{
     position: fixed;
     top:40px;
     left: 40px;
