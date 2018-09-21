@@ -26,24 +26,29 @@ $(() => {
 
 $(document).ready(() => {
 
-const $newTaskForm = $('#settings');
+  
+
+  const $settingsForm = $('#settings');
 $( "#settings" ).click(function() {
-  alert( "Handler for .click() called." );
+  alert('settings')
+  $('#settingsModal').modal()
 });
-const $settingsForm = $('#sign-in');
+const $signInForm = $('#sign-in');
 $( "#sign-in" ).click(function() {
-  alert( "Handler for .click() called." );
+  $('#loginModal').modal()
 });
 const $registerForm = $('#register');
 $( "#register" ).click(function() {
-  alert( "Handler for .click() called." );
+  alert( "register." );
 });
 const $newTask = $('#new-task');
 $( "#new-task" ).click(function() {
-  alert( "Handler for .click() called." );
+  alert( "new-task." );
 });
-
-
+const $newListButton = $('#newlistbut');
+$( "#newlistbut" ).click(function() {
+  alert( "newListbut." );
+});
 
 });
 
