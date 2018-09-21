@@ -25,17 +25,21 @@ module.exports = (dbAccess) => {
         // try to find user based on email, return user if found
         dbAccess.getEmail(email)
           .then((realUser) => {
-            if (!realuser.length === 0) {
+            if (!realUser.length === 0) {
               console.log('Email taken');
               res.status(400).send('400 Error: Email has already registered.');
+            } else {
+              // register user
+              const newUser = {
+                email: req.body.email,
+                username: req.body.username,
+                password: bcrypt.hashSync(req.body.password, 10)
+              }
+              console.log("----newUser", newUser);
+              dbAccess.saveUser(newUser);
+
             }
-            // register user
-            dbAccess.saveUser()
           })
-      }
-      else {
-        // for new user save username, email, hashedpassword to db then retrieve the db id for the user and set their cookies
-        res.redirect('/lists');
       }
     });
 

@@ -36,14 +36,10 @@ module.exports = function dbAccess(knex) {
     * @param {Object}user
     */
 
-    saveUser: function saveUser(user) {
+    saveUser: function saveUser(newUser) {
       knex
         .from('user')
-        .insert({
-          username: user.username,
-          password: user.password,
-          email: user.email,
-        });
+        .insert(newUser);
     },
 
     /** changeUser
