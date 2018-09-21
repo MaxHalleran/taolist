@@ -113,11 +113,11 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 })
 
-app.get('/lists', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ });
 })
 
-app.post('/lists', (req, res) => {
+app.post('/', (req, res) => {
   const cookie = req.session;
   const item = req.body;
   // for existing user, add item to db
@@ -132,7 +132,7 @@ app.post('/lists', (req, res) => {
   }
 })
 
-app.put('/lists/:id', (req, res) => {
+app.put('/:id', (req, res) => {
   const cookie = req.session;
   const newItem = req.body;
   // for existing user, update item on db
@@ -150,7 +150,7 @@ app.put('/lists/:id', (req, res) => {
   }
 })
 
-app.delete('/lists/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
   const item = req.params.id;
   //delete item on db
   deleteItem();
