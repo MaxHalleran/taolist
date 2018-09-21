@@ -54,7 +54,7 @@ app.use('/api/item', itemRoute(dbAccess));
 app.use('/api/register', registerRoute(dbAccess));
 
 app.post('/logout', (req, res) => {
-  // gonna log out the user.
+  req.session = null;
 });
 
 // Home page
