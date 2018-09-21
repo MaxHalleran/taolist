@@ -1,4 +1,4 @@
-# Tao List Smart ToDo List v0.0.2
+# Tao List Smart ToDo List v0.0.3
 
 ## Application Setup
 
@@ -25,10 +25,12 @@
 
 ## Devlog
 
+v0.0.3 - Database helper functions created
+
 v0.0.2 - Database skeleton constructed
 
 v0.0.1 - File structure created
 
 ## Focus
 
-We are currently working on setting up the routes, the database and styling the landing page.
+We are currently working on setting up the routes, styling the landing page and creating the ability for the application to interact with the database.

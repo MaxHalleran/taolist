@@ -1,21 +1,27 @@
-"use strict";
+'use strict';
 
 require('dotenv').config();
 
-const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
-const express     = require("express");
-const bodyParser  = require("body-parser");
-const sass        = require("node-sass-middleware");
-const app         = express();
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || 'development';
+const cookieSession = require('cookie-session')
+const express = require('express');
+const bodyParser = require('body-parser');
+const sass = require('node-sass-middleware');
+const app = express();
 
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-const morgan      = require('morgan');
-const knexLogger  = require('knex-logger');
+const knexConfig = require('./knexfile');
+const knex = require('knex')(knexConfig[ENV]);
+const morgan = require('morgan');
+const knexLogger = require('knex-logger');
+
+const dbAccess = require('./public/scripts/utility/dbAccess')(knex);
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const userRoute = require('./routes/user');
+const itemRoute = require('./routes/item');
+// const listRoutes = require('./routes/list');
+const registerRoute = require('./routes/register');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -25,6 +31,12 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['suppalightohousegottariot'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -33,18 +45,23 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+app.use('/api/user', userRoute(dbAccess));
+app.use('/api/item', itemRoute(dbAccess));
+// app.use('/api/list', userRoute(knex));
+app.use('/api/register', registerRoute(dbAccess));
 
-app.use("/lists", userRoutes(knex));
+app.post('/logout', (req, res) => {
+  // gonna log out the user.
+});
 
 // Home page
-app.get("/", (req, res) => {
-  res.render("index");
+app.get('/', (req, res) => {
+  res.render('index');
 });
- 
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });

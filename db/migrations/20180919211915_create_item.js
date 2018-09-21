@@ -3,8 +3,10 @@ exports.up = function(knex, Promise) {
     table.increments('id');
     table.integer('user_id');
     table.string('name');
+    table.integer('table_id');
 
     table.foreign('user_id').references('id').inTable('user');
+    table.foreign('table_id').references('id').inTable('list');
   });
 };
 
