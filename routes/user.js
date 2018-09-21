@@ -19,6 +19,8 @@ const guestDatabase = {
 }
 
 module.exports = function userRoutes(dbAccess) {
+  const routeFunction = require('./routeHelper/routeFunction');
+
   async function awaitFunction(username) {
     console.log(await dbAccess.getUser(username));
   }
@@ -26,10 +28,11 @@ module.exports = function userRoutes(dbAccess) {
   router.route('/')
     .get((req, res) => {
       console.log('in get user');
-      dbAccess.getUser('Charlie')
+      dbAccess.getUser('Alice')
         .then((user) => {
         res.json(user);
       });
+      awaitFunction('Alice');
     })
     .post((req, res) => {
       // log in route. Needs to retrieve user info. We'll need the username and password from the user.
@@ -38,12 +41,19 @@ module.exports = function userRoutes(dbAccess) {
       let isUser;
       dbAccess.getUser(username)
         .then((user) => {
-
+          if (routeFunction.validateLogin(userpass, user.password)) {
+            // yay they match
+            req.session.user_id = user.id;
+            res.json(user);
+          } else {
+            // error, they didn't match
+            res.json('false');
+          }
         })
-      // we need to retrieve the users information from the database in order to compare it.
     })
     .put((req, res) => {
       // a route to update the users settings.
+      // This is an empty route for now
     })
     .delete((req, res) => {
       // placeholder, doesn't do anything and isnt planned to do anything

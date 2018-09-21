@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
+const cookieSession = require('cookie-session')
 const express = require('express');
 const bodyParser = require('body-parser');
 const sass = require('node-sass-middleware');
@@ -30,6 +31,12 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['suppalightohousegottariot'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -42,10 +49,9 @@ app.use(express.static('public'));
 
 // Mount all resource routes
 app.use('/api/user', userRoute(dbAccess));
-app.use('/api/item', itemRoute(knex));
+app.use('/api/item', itemRoute(dbAccess));
 // app.use('/api/list', userRoute(knex));
-app.use('/api/register', registerRoute(knex));
-// app.use("/lists", userRoutes(knex));
+app.use('/api/register', registerRoute(dbAccess));
 
 app.post('/logout', (req, res) => {
   // gonna log out the user.
