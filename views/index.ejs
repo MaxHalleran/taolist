@@ -3,10 +3,6 @@
    <head>
         <!--Tab title -->
       <title>Ta&#x262F;list</title>
-        <!-- Normalize CSS -->
-      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-        <!-- Border Box CSS -->
-      <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
         <!-- Bootstrap CSS -->
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
       <!-- Main CSS -->
@@ -112,24 +108,25 @@
       </button>
     </div>
     <div class="modal-body">
-      <form action="/login" method="post">
+      <form action="/api/user" method="post">
         <fieldset>
           <legend>Login</legend>
 
-          <input type="text" id="lusername" name="login">
-          <label for="lusername">lusername</label><br/>
+          <input type="text" id="lusername" name="username">
+          <label for="lusername">username</label><br/>
 
           <input type="text" id="lemail" name="login">
-          <label for="lemail">lemail</label><br/>
+          <label for="lemail">email</label><br/>
 
-          <input type="text" id="lpassword" name="login">
-          <label for="lpassword">lpassword</label>
+          <input type="text" id="lpassword" name="password">
+          <label for="lpassword">password</label>
         </fieldset>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary modal-login-button" value="Save Changes">
+      </div>
+    </form>
     </div>
   </div>
 </div>

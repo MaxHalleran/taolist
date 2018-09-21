@@ -11,14 +11,15 @@
 $(() => {
   console.log('ajax fired');
   $.ajax({
-    method: 'GET',
+    method: 'POST',
     url: '/api/user',
+    data: {
+      username: 'Alice',
+      password: 'password',
+    }
   }).done((users) => {
     console.log('hi')
-    for(user of users) {
-      console.log(user);
-      $('<div>').text(user.username).appendTo($('body'));
-    }
+    console.log(users);
   });
 });
 
@@ -26,7 +27,7 @@ $(() => {
 
 $(document).ready(() => {
 
-  
+
 
   const $settingsForm = $('#settings');
 $( "#settings" ).click(function() {
@@ -51,4 +52,3 @@ $( "#newlistbut" ).click(function() {
 });
 
 });
-
