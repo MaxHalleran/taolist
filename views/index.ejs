@@ -19,27 +19,27 @@
       <!-- HEADER BAR START -->
       <div class="container-fluid no-padding">
          <div id="headerrow" class="rowheader">
-               <!-- PUT settings -->
+               <!-- PUT(MODAL) settings -->
                <div class="header-order" id="settings" data-target="#exampleModal">
                <a style="pointer-events:none" id="asettings">Settings</a>
                <div class="hover"></div>
                </div>
 
-           <!-- POST Sign in -->
+           <!-- OPEN(POST) modal-->
                <div class="header-order" id="sign-in">
                <a style="pointer-events:none" id="asign-in">Sign In</a>
                <div class="hover"></div>
                </div>
-           <!--POST Register-->
+           <!-- OPEN(POST) modal-->
               <div class="header-order" id="register">
               <a style="pointer-events:none" id="aregister">Create Account</a>
               <div class="hover"></div>
               </div>
-           <!-- Create new task -->
-         <div class="header-order" id="new-task">
-            <a style="pointer-events:none" id="anew-task">New Task</a>
-            <div class="hover"></div>
-         </div>
+           <!-- POST LOGOUT -->
+            <div class="header-order" id="logout">
+                <a style="pointer-events:none" id="alogout">Logout</a>
+                <div class="hover"></div>
+            </div>
             <!-- Col 1 header L-->
             <div class="col-sm-4 panel">
             </div>
@@ -97,7 +97,7 @@
       </div>
       <div class='☯'></div>
 
-      <!--Login Modal -->
+    <!--Sign In Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
@@ -131,25 +131,38 @@
   </div>
 </div>
 </div>
-<!--Settings Modal -->
-<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--Create Account Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+      <h5 class="modal-title" id="exampleModalLabel">Register</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      ...
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <form action="/api/register" method="post">
+        <fieldset>
+          <legend>Register</legend>
+
+          <input type="text" id="rusername" name="username">
+          <label for="lusername">username</label><br/>
+
+          <input type="text" id="remail" name="login">
+          <label for="lemail">email</label><br/>
+
+          <input type="text" id="rpassword" name="password">
+          <label for="lpassword">password</label>
+        </fieldset>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary modal-login-button" value="Save Changes">
+      </div>
+    </form>
     </div>
   </div>
 </div>
 </div>
-   </body>
-</html>
+

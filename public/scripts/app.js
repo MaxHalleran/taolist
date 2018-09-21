@@ -29,7 +29,7 @@ $(document).ready(() => {
 
 
 
-  const $settingsForm = $('#settings');
+const $settingsForm = $('#settings');
 $( "#settings" ).click(function() {
   alert('settings')
   $('#settingsModal').modal()
@@ -40,15 +40,15 @@ $( "#sign-in" ).click(function() {
 });
 const $registerForm = $('#register');
 $( "#register" ).click(function() {
-  alert( "register." );
+  $('#registerModal').modal()
 });
-const $newTask = $('#new-task');
-$( "#new-task" ).click(function() {
-  alert( "new-task." );
+const $logout = $('#logout');
+$( "#logout" ).click(function() {
+  alert("alerttripped")
 });
 const $newListButton = $('#newlistbut');
 $( "#newlistbut" ).click(function() {
-  alert( "newListbut." );
+  alert( "newlisttripped." );
 });
 
 });

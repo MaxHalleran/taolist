@@ -30,9 +30,8 @@ module.exports = (dbAccess) => {
               res.status(400).send('400 Error: Email has already registered.');
             }
             // register user
+            dbAccess.saveUser()
           })
-      }; if (user) {
-        res.status(400).send('400 Error: Email already exists. ')
       }
       else {
         // for new user save username, email, hashedpassword to db then retrieve the db id for the user and set their cookies
