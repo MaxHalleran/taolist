@@ -41,6 +41,7 @@ module.exports = function userRoutes(dbAccess) {
       let isUser;
       dbAccess.getUser(username)
         .then((user) => {
+          console.log(user);
           if (routeFunction.validateLogin(userpass, user.password)) {
             // yay they match
             req.session.user_id = user.id;
