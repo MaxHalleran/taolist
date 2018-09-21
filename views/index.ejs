@@ -1,21 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home Page</title>
+<!DOCTYPE HTML>
+<html>
+   <head>
+        <!--Tab title -->
+      <title>Ta&#x262F;list</title>
+        <!-- Normalize CSS -->
+      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+        <!-- Border Box CSS -->
+      <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+        <!-- Bootstrap CSS -->
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <!-- Main CSS -->
+      <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+      <!-- Jquery -->
+      <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+      <!-- App.js -->
+      <script type="text/javascript" src="/scripts/app.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <!-- HEADER BAR START -->
+      <div class="container-fluid no-padding">
+         <div id="headerrow" class="rowheader">
+               <!-- PUT settings -->
+               <div class="header-order" id="settings" data-target="#exampleModal">
+               <a style="pointer-events:none" id="asettings">Settings</a>
+               <div class="hover"></div>
+               </div>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/yinYang.css" type="text/css" />
+           <!-- POST Sign in -->
+               <div class="header-order" id="sign-in">
+               <a style="pointer-events:none" id="asign-in">Sign In</a>
+               <div class="hover"></div>
+               </div>
+           <!--POST Register-->
+              <div class="header-order" id="register">
+              <a style="pointer-events:none" id="aregister">Create Account</a>
+              <div class="hover"></div>
+              </div>
+           <!-- Create new task -->
+         <div class="header-order" id="new-task">
+            <a style="pointer-events:none" id="anew-task">New Task</a>
+            <div class="hover"></div>
+         </div>
+            <!-- Col 1 header L-->
+            <div class="col-sm-4 panel">
+            </div>
+            <!-- Col 2 header C-->
+            <div class="col-sm-4 panel" id="overflowbreak">
+               <h1 class=text-center>Ta<span class="yinsymbol">&#x262F;</span>list</h1>
+            </div>
+            <!-- Col 3 header R-->
+            <div class="col-sm-4 panel ">
+            </div>
+         </div>
+      </div>
+      <!-- Button from https://sign.compass.com/ -->
+      <!--- HEADER BAR END -->
+      <!--- TASK TITLE AREA-->
+      <div class="container-fluid no-padding">
+      <div id="mainrow" class="rowheader">
+         <!-- Col 1 main L-->
+         <div class="col-sm-4 panel">
+         </div>
+         <!-- Col 2 main C-->
+         <div class="col-sm-4 panel">
+            <h4 class=text-center>LIST NAME PLACEHOLDER</h4>
+         </div>
+         <!-- Col 3 main R-->
+         <div class="col-sm-4 panel ">
+         </div>
+      </div>
+      <div id="mainrow2" class="rowheader">
+         <!-- Col 1 main2 L-->
+         <div class="col-sm-2 left">
+         </div>
+         <!--- Col 2 main2 C-->
+         <div class="col-sm-8 center">
+            <section class="inputsection">
+               <h2>Create a new list</h2>
+               <textarea class="contentin" id="nlist" placeholder="New list name"></textarea>
+               <div class="header-order" id="newlistbut">
+                  <a style="pointer-events:none" id="anewlistbut">Create List</a>
+               </div>
+            </section>
+            <section class="inputsection">
+               <h2>Submit a new task</h2>
+               <textarea class="contentin" placeholder="New task name"></textarea>
+               <select id="multi-input" name="Catagory">
+                  <option value="PLACEHOLDER">PLACEHOLDER</option>
+                  <option value="PLACEHOLDER"></option>
+                  <option value="PLACEHOLDER">PLACEHOLDER</option>
+               </select>
+            </section>
+         </div>
+         <!-- Col 3 main2 R-->
+         <div class="col-sm-2 right">
+         </div>
+      </div>
+      <div class='☯'></div>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
-  </head>
+      <!--Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="/login" method="post">
+        <fieldset>
+          <legend>Login</legend>
 
-  <body>
-    <h1>Hello World!</h1>
-    <div class='☯'></div>
-  </body>
+          <input type="text" id="lusername" name="login">
+          <label for="lusername">lusername</label><br/>
+
+          <input type="text" id="lemail" name="login">
+          <label for="lemail">lemail</label><br/>
+
+          <input type="text" id="lpassword" name="login">
+          <label for="lpassword">lpassword</label>
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>
+<!--Settings Modal -->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      ...
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>
+   </body>
 </html>
