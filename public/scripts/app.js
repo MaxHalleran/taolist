@@ -10,11 +10,14 @@
 // });
 
 $(() => {
+  console.log('ajax fired');
   $.ajax({
     method: 'GET',
     url: '/api/user',
   }).done((users) => {
+    console.log('hi')
     for(user of users) {
+      console.log(user);
       $('<div>').text(user.username).appendTo($('body'));
     }
   });

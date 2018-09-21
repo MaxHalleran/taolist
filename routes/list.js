@@ -52,48 +52,13 @@ function checkLogInStatus(email, password, users){
 */
 
 // find user from users table based on email
-function findUser(users, email){
-  // find match email from users table
-  return user;
-}
-
-// I really like this
-const guestDatabase = {
-  guestId: {
-    toWatch:[],
-    toEat:[],
-    toRead:[],
-    toBuy:[]
-  }
-}
+// function findUser(users, email){
+//   // find match email from users table
+//   return user;
+// }
 
 // I think we could have a '/user/register' for registering. Thumbs up.
 // we could use method chaining here to unify this code.
-app.get('/register', (req, res) => {
-  res.render('register');
-})
-
-app.post("/register", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const hashedPassword = bcrypt.hashSync(password, 10);
-
-  // handle errors
-  if (!email || !password) {
-    res.status(400).send("400 Error: Email or password was not filled.");
-  } else {
-    // try to find user based on email, return user if found
-    }; if (user) {
-      res.status(400).send("400 Error: Email already exists. ")
-    }
-    else {
-      // for new user, save id, username, email, hashedpassword to db
-
-      const user_id = generateRandomString();
-      req.session.user_id = user_id;
-      res.redirect("/lists");
-    }
-});
 
 app.get('/login', (req, res) => {
   if (req.session.user_id) {
@@ -101,7 +66,7 @@ app.get('/login', (req, res) => {
   } else {
     res.render('login');
   }
-})
+});
 
 app.post('/login', (req, res) => {
   const username = req.body.username;

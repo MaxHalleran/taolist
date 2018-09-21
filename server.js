@@ -17,10 +17,10 @@ const knexLogger = require('knex-logger');
 const dbAccess = require('./public/scripts/utility/dbAccess')(knex);
 
 // Seperated Routes for each Resource
-const userRoute = require('./routes/user')(dbAccess);
-const itemRoute = require('./routes/item')(dbAccess);
+const userRoute = require('./routes/user');
+const itemRoute = require('./routes/item');
 // const listRoutes = require('./routes/list');
-const registerRoute = require('./routes/register')(dbAccess);
+const registerRoute = require('./routes/register');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -41,7 +41,7 @@ app.use("/styles", sass({
 app.use(express.static('public'));
 
 // Mount all resource routes
-app.use('/api/user', userRoute(knex));
+app.use('/api/user', userRoute(dbAccess));
 app.use('/api/item', itemRoute(knex));
 // app.use('/api/list', userRoute(knex));
 app.use('/api/register', registerRoute(knex));

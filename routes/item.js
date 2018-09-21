@@ -7,16 +7,16 @@ const router = express.Router();
 module.exports = (knex) => {
   router.route('/')
     .get((req, res) => {
-      
+      // a route to get information for a specific item
     })
     .post((req, res) => {
-      // post stuff
+      // the route to create an item
     })
     .put((req, res) => {
-      // change stuff
+      // to change an item
     })
     .delete((req, res) => {
-      // change stuff
+      // to mark it inactive and move it into a 'completed' list
     })
 
   return router;

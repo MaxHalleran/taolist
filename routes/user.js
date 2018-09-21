@@ -4,17 +4,22 @@ const express = require('express');
 
 const router = express.Router();
 
-module.exports = (knex, dbAccess) => {
+// the adhoc guest database for users who are not logged in
+const guestDatabase = {
+  guestId: {
+    toWatch:[],
+    toEat:[],
+    toRead:[],
+    toBuy:[],
+  }
+}
+
+module.exports = function userRoutes(dbAccess) {
   router.route('/')
     .get((req, res) => {
       console.log('in get user');
-      knex
-        .select('*')
-        .from('user')
-        .then((results) => {
-          res.json(results);
-        });
-      dbAccess.getUser();
+      res.json(dbAccess.getUser('dave'));
+      // res.json(dbAccess.getUser());
 
     })
     .post((req, res) => {
@@ -25,10 +30,10 @@ module.exports = (knex, dbAccess) => {
       // we need to retrieve the users information from the database in order to compare it.
     })
     .put((req, res) => {
-      // change stuff
+      // a route to update the users settings.
     })
     .delete((req, res) => {
-      // change stuff
+      // placeholder, doesn't do anything and isnt planned to do anything
     })
 
   return router;
