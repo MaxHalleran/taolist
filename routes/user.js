@@ -39,7 +39,7 @@ module.exports = function userRoutes(dbAccess) {
       // log in route. Needs to retrieve user info. We'll need the username and password from the user.
       const username = req.body.username;
       const userpass = req.body.password;
-      if (!password || !username) {
+      if (!userpass || !username) {
         req.status(401, {message: "username and password required"});
       }
       let isUser;

@@ -23,9 +23,13 @@ module.exports = (dbAccess) => {
         res.status(400).send('400 Error: Email or password was not filled.');
       } else {
         // try to find user based on email, return user if found
-        dbAccess.getUser(username)
+        dbAccess.getEmail(email)
           .then((realUser) => {
-            
+            if (!realuser.length === 0) {
+              console.log('Email taken');
+              res.status(400).send('400 Error: Email has already registered.');
+            }
+            // register user
           })
       }; if (user) {
         res.status(400).send('400 Error: Email already exists. ')

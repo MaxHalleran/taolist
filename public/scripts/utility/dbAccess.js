@@ -24,6 +24,13 @@ module.exports = function dbAccess(knex) {
         .where('username', username)
     },
 
+    getEmail: (email) => {
+      return knex
+        .select('*')
+        .from('user')
+        .where('email', email)
+    },
+
     /** saveUser
     * takes a user object and creates a new user in the Database
     * @param {Object}user
