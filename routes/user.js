@@ -35,20 +35,22 @@ module.exports = function userRoutes(dbAccess) {
       awaitFunction('Alice');
     })
     .post((req, res) => {
+      console.log('user/post is firing');
       // log in route. Needs to retrieve user info. We'll need the username and password from the user.
       const username = req.body.username;
       const userpass = req.body.password;
       let isUser;
       dbAccess.getUser(username)
         .then((user) => {
-          console.log(user);
-          if (routeFunction.validateLogin(userpass, user.password)) {
+          console.log("------",user);
+          console.log("=====user[0].pswd", user[0].password);
+          if (routeFunction.validateLogin(userpass, user[0].password)) {
             // yay they match
-            req.session.user_id = user.id;
-            res.json(user);
+            req.session.user_id = user[0].id;
+            res.json('the user validation was valid');
           } else {
             // error, they didn't match
-            res.json('false');
+            res.json('the user validation was invalid');
           }
         })
     })
