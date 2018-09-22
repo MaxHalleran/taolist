@@ -26,7 +26,7 @@ module.exports = function dbAccess(knex) {
 
     getEmail: (email) => {
       return knex
-        .select('*')
+        .select('email')
         .from('user')
         .where('email', email)
     },

@@ -26,17 +26,20 @@ module.exports = (dbAccess) => {
     })
 
     .post((req, res) => {
-      const email = req.body.email;
-      const password = req.body.password;
-      const username = req.body.username;
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+      const newUser = {
+        email: req.body.email,
+        username: req.body.username,
+        password: hashedPassword,
+      };
+      console.log(newUser);
 
       // handle errors
-      if (!email || !password || !username) {
+      if (!newUser.email || !newUser.password || !newUser.username) {
         res.status(400).send('400 Error: Email or password was not filled.');
       } else {
         // try to find user based on email, return user if found
-        dbAccess.getEmail(email)
+        dbAccess.getEmail(newUser.email)
           .then((realUser) => {
             console.log("-----realUser", realUser);
             if (realUser.length !== 0) {
@@ -45,12 +48,7 @@ module.exports = (dbAccess) => {
               // res.redirect("/");
             } else {
               // register user
-              const newUser = {
-                email: req.body.email,
-                username: req.body.username,
-                password: bcrypt.hashSync(req.body.password, 10)
-              }
-              console.log("----newUser", newUser);
+              console.log('----newUser', newUser);
               dbAccess.saveUser(newUser);
               dbAccess.getEmail(email).then((realUser) => {
                 console.log('----add newUser', realUser);
@@ -59,7 +57,7 @@ module.exports = (dbAccess) => {
               req.session.user_id = id;
               res.status(200);
             }
-          })
+          });
       }
     });
 
