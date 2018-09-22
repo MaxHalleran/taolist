@@ -64,7 +64,7 @@ module.exports = function userRoutes(dbAccess) {
     })
     .delete((req, res) => {
       // placeholder, doesn't do anything and isnt planned to do anything
-      
+
     })
 
   return router;

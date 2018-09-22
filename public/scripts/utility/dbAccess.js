@@ -37,7 +37,7 @@ module.exports = function dbAccess(knex) {
     */
 
     saveUser: function saveUser(newUser) {
-      knex
+      return knex
         .from('user')
         .insert(newUser);
     },
