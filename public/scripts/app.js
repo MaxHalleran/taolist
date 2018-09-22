@@ -31,7 +31,12 @@ $(document).ready(() => {
 
 const $settingsForm = $('#settings');
 $( "#settings" ).click(function() {
-  alert('settings')
+  $.getJSON( "https://en.wikipedia.org/wiki/Harry_Potter?action=cirrusdump", function( data ) {
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( key + val);
+    });
+});
   $('#settingsModal').modal()
 });
 const $signInForm = $('#sign-in');
