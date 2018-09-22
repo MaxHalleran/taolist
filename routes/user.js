@@ -34,6 +34,7 @@ module.exports = function userRoutes(dbAccess) {
       });
       awaitFunction('Alice');
     })
+
     .post((req, res) => {
       console.log('user/post is firing');
       // log in route. Needs to retrieve user info. We'll need the username and password from the user.
@@ -45,7 +46,7 @@ module.exports = function userRoutes(dbAccess) {
       let isUser;
       dbAccess.getUser(username)
         .then((user) => {
-          console.log("------",user);
+          console.log("------user",user);
           console.log("=====user[0].pswd", user[0].password);
           if (routeFunction.validateLogin(userpass, user[0].password)) {
             // yay they match
@@ -63,6 +64,7 @@ module.exports = function userRoutes(dbAccess) {
     })
     .delete((req, res) => {
       // placeholder, doesn't do anything and isnt planned to do anything
+      
     })
 
   return router;

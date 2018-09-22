@@ -42,9 +42,18 @@ const $registerForm = $('#register');
 $( "#register" ).click(function() {
   $('#registerModal').modal()
 });
-const $logout = $('#logout');
-$( "#logout" ).click(function() {
-  alert("alerttripped")
+// const $logout = $('#logout');
+// $( "#logout" ).click(function() {
+//   alert("alerttripped")
+// });
+$("#logout").on("click", function(){
+  $.ajax({
+    type: 'POST',
+    url: '/logout',
+  }).then(function(){
+    console.log("post to /logout");
+})
+
 });
 const $newListButton = $('#newlistbut');
 $( "#newlistbut" ).click(function() {
