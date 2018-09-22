@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
 const cookieSession = require('cookie-session')
 const express = require('express');

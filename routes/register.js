@@ -13,19 +13,20 @@ module.exports = (dbAccess) => {
       res.status(200);
     })
     .post((req, res) => {
-      const user = {
-      email: req.body.email,
-      username: req.body.username,
-      password =    bcrypt.hashSync(req.body.password, 10),
-      }
-      console.log(user);
+      const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+      const newUser = {
+        email: req.body.email,
+        username: req.body.username,
+        password: hashedPassword,
+      };
+      console.log(newUser);
 
       // handle errors
-      if (!user.email || !user.password || !user.username) {
+      if (!newUser.email || !newUser.password || !newUser.username) {
         res.status(400).send('400 Error: Email or password was not filled.');
       } else {
         // try to find user based on email, return user if found
-        dbAccess.getEmail(user.email)
+        dbAccess.getEmail(newUser.email)
           .then((realUser) => {
             console.log('What is realuser?', realUser.length);
             if (!realUser.length === 0) {
@@ -33,20 +34,12 @@ module.exports = (dbAccess) => {
               res.status(400).send('400 Error: Email has already registered.');
             } else {
               // register user
-              const newUser = {
-                email: req.body.email,
-                username: req.body.username,
-                password: bcrypt.hashSync(req.body.password, 10)
-              }
-              console.log("----newUser", newUser);
+              console.log('----newUser', newUser);
               dbAccess.saveUser(newUser);
-
+              res.status(200);
             }
-            // register user
-            dbAccess.saveUser(user);
-            res.status(200);
-          })
-      };
+          });
+      }
     });
 
   return router;
