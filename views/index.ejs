@@ -182,13 +182,26 @@ bigger comment so we dont forget to take it <output name="-->
     <div class="modal-body">
       <form action="/api/user" method="post">
         <fieldset>
-          <legend>Max Special</legend>
+
+          <legend>List Special</legend>
 
           <input type="text" id="listid" name="listid">
           <label for="listid">List id</label><br/>
           <input type="submit" class="btn btn-primary modal-settings-get-list" value="Get single list">
 
           <input type="submit" class="btn btn-primary modal-settings-get-multiple-list" value="Get multiple lists">
+
+        </fieldset>
+
+        <fieldset>
+
+          <legend>Item Special</legend>
+
+          <input type="text" id="listid" name="itemid">
+          <label for="listid">Item id</label><br/>
+          <input type="submit" class="btn btn-primary modal-settings-make-item" value="make an item in a list">
+
+          <input type="submit" class="btn btn-primary modal-settings-get-item" value="Get an item and it's descriptions">
 
         </fieldset>
 

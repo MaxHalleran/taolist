@@ -93,9 +93,31 @@ $(document).ready(() => {
   const settingsGetMultipleListBut = function $settingsGetMultipleListBut() {
     event.preventDefault();
     console.log('multiple');
+
+    $.ajax({
+      type: 'GET',
+      url: `/api/list/user/${$('#listid').val()}`,
+    })
+      .then((list) => {
+        console.log(list);
+      })
   }
 
   $settingsGetList.on('click', settingsGetListBut);
   $settingsGetMultipleList.on('click', settingsGetMultipleListBut);
+
+  const $makeItem = $('.modal-settings-make-item');
+  const $getItem = $('.modal-settings-get-item');
+
+  const makeItem = function makeItem() {
+
+  }
+
+  const getItem = function getItem() {
+
+  }
+
+  $makeItem.on('click', makeItem);
+  $getItem.on('click', getItem);
 
 });

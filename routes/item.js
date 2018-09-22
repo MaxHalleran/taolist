@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = function itemRoutes(dbAccess) {
-  router.route('/')
+  router.route('/:id?')
     .get((req, res) => {
       // a route to get information for a specific item
       dbAccess.getItem(req.body.item_id)
