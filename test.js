@@ -9,7 +9,12 @@ if (!error && response.statusCode == 200) {
     const $ = cheerio.load(html);
     $('p').each(function(i, element){
     const text = $(this).next();
-    console.log(text.text());
+    console.log(text.text().replace(/[\W_]+/g," ");
+    const document = {
+        content: text,
+        type: 'PLAIN_TEXT',
+      };
+      console.log(document)
     });
 }
 });
