@@ -15,8 +15,8 @@ const knex = require('../public/scripts/utility/client');
 // ));
 
 // Helper functions
-function generateRandomString(){
-  return  Math.random().toString(20).substring(2, 8);
+function generateRandomString() {
+  return Math.random().toString(20).substring(2, 8);
 }
 
 module.exports = (dbAccess) => {
@@ -42,26 +42,24 @@ module.exports = (dbAccess) => {
         // try to find user based on email, return user if found
         dbAccess.getEmail(newUser.email)
           .then((realUser) => {
-            console.log("-----realUser", realUser);
+            console.log('-----realUser', realUser);
             if (realUser.length !== 0) {
               console.log('Email taken');
-              res.status(400).send("Email already registered");
+              res.status(400).send('Email already registered');
               // res.redirect("/");
             } else {
               // register user
               console.log('----newUser', newUser);
-              dbAccess.saveUser(newUser);
-              knex('user').insert(newUser)
-              .asCallback(function(err, result){
-                knex.select("email").from("user")
-                .then(console.log);
-              })
-              dbAccess.getEmail(email).then((realUser) => {
-                console.log('----add newUser', realUser);
-              })
-              // const user_id = generateRandomString();
-              req.session.user_id = id;
-              res.status(200);
+              dbAccess.saveUser(newUser)
+                .then(() => {
+                  dbAccess.getUser(newUser.username)
+                    .then((someoneNew) => {
+                      console.log('----add newUser', someoneNew);
+                      // const user_id = generateRandomString();
+                      req.session.user_id = someoneNew.id;
+                      res.status(200);
+                    });
+                });
             }
           });
       }
