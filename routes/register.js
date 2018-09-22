@@ -5,6 +5,7 @@ const express = require('express');
 // const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const router = express.Router();
+const knex = require('../public/scripts/utility/client');
 
 // app.use(cookieSession({
 //   name: 'session',
@@ -50,6 +51,11 @@ module.exports = (dbAccess) => {
               // register user
               console.log('----newUser', newUser);
               dbAccess.saveUser(newUser);
+              knex('user').insert(newUser)
+              .asCallback(function(err, result){
+                knex.select("email").from("user")
+                .then(console.log);
+              })
               dbAccess.getEmail(email).then((realUser) => {
                 console.log('----add newUser', realUser);
               })
