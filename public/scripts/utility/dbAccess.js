@@ -56,7 +56,7 @@ module.exports = function dbAccess(knex) {
     * @param {String}ip
     */
     logIp: function logIp(currentIp) {
-      knex
+      return knex
         .select('ip')
         .from('ip')
         .where('ip', currentIp)
@@ -77,15 +77,13 @@ module.exports = function dbAccess(knex) {
     * takes a users id, a list name and a category and makes a list in the database
     * @param {Number}userid
     * @param {String}listName
-    * @param {String}category
     */
-    createList: function createList(listName, userid, category) {
-      knex
+    createList: function createList(listName, userid) {
+      return knex
         .from('list')
         .insert({
           name: listName,
           user_id: userid,
-          category,
         });
     },
 
@@ -94,11 +92,10 @@ module.exports = function dbAccess(knex) {
     * @param {Number}listId
     */
     getList: function getList(listid) {
-      knex
+      return knex
         .select('*')
         .from('table')
         .where('id', listid)
-        .then(results => results);
     },
 
     /** changeList
@@ -115,7 +112,7 @@ module.exports = function dbAccess(knex) {
     * @param {Number}listId
     */
     deleteList: function deleteList(listId) {
-      knex
+      return knex
         .from('list')
         .where('id', listId)
         .del();
@@ -127,17 +124,13 @@ module.exports = function dbAccess(knex) {
     * @param {Array}itemDescription
     */
     createItem: function createItem(itemName, userid, listid, itemDescription) {
-      let itemNum;
-      knex
+      return knex
         .from('item')
         .insert({
           name: itemName,
           user_id: userid,
           list_id: listid,
         })
-        .then((item) => {
-          itemNum = item.id;
-        });
     },
 
     /** deleteItem
