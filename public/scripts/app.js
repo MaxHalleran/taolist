@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // $(() => {
 //   $.ajax({
 //     method: 'GET',
@@ -8,56 +10,92 @@
 //     }
 //   });
 // });
-$(() => {
-  console.log('ajax fired');
-  $.ajax({
-    method: 'GET',
-    url: '/api/user',
-    data: {
-      username: 'Alice',
-      password: 'password',
-    }
-  }).done((users) => {
-    console.log('hi')
-    console.log(users);
-  });
-});
+// $(() => {
+//   console.log('ajax fired');
+//   $.ajax({
+//     method: 'GET',
+//     url: '/api/user',
+//     data: {
+//       username: 'Alice',
+//       password: 'password',
+//     }
+//   }).done((users) => {
+//     console.log('hi')
+//     console.log(users);
+//   });
+// });
 
 
 
 $(document).ready(() => {
+  const $settingsForm = $('#settings');
+  $( "#settings" ).click(function() {
+    $('#settingsModal').modal()
+  });
 
+  const $signInForm = $('#sign-in');
+  $( "#sign-in" ).click(function() {
+    $('#loginModal').modal()
+  });
 
-
-const $settingsForm = $('#settings');
-$( "#settings" ).click(function() {
-  alert('settings')
-  $('#settingsModal').modal()
-});
-const $signInForm = $('#sign-in');
-$( "#sign-in" ).click(function() {
-  $('#loginModal').modal()
-});
-const $registerForm = $('#register');
-$( "#register" ).click(function() {
+  const $registerForm = $('#register');
+  $( "#register" ).click(function() {
   $('#registerModal').modal()
-});
-// const $logout = $('#logout');
-// $( "#logout" ).click(function() {
-//   alert("alerttripped")
-// });
-$("#logout").on("click", function(){
-  $.ajax({
-    type: 'POST',
-    url: '/logout',
-  }).then(function(){
-    console.log("post to /logout");
-})
+  });
 
-});
-const $newListButton = $('#newlistbut');
-$( "#newlistbut" ).click(function() {
-  alert( "newlisttripped." );
-});
+  // const $logout = $('#logout');
+  // $( "#logout" ).click(function() {
+  //   alert("alerttripped")
+  // });
+
+  $("#logout").on("click", function(){
+    $.ajax({
+      type: 'POST',
+      url: '/logout',
+    }).then(function(){
+      console.log("post to /logout");
+    })
+  });
+
+  const $newListButton = $('#newlistbut');
+  const $newListName = $('#nlist');
+
+  const createNewList = function createNewList() {
+    console.log($newListName.val());
+    $.ajax({
+      type: 'POST',
+      url: '/api/list',
+      data: {
+        listName: $newListName.val(),
+      }
+    })
+      .then(console.log('Finished'));
+  }
+
+  $( "#newlistbut" ).on('click', createNewList);
+
+  const $settingsGetList = $('.modal-settings-get-list');
+  const $settingsGetMultipleList = $('.modal-settings-get-multiple-list');
+
+  const settingsGetListBut = function $settingsGetListBut() {
+    event.preventDefault();
+    console.log('single');
+
+    $.ajax({
+      type: 'GET',
+      url: `/api/list/${$('#listid').val()}`,
+    })
+      .then((list) => {
+        console.log(list);
+      })
+  }
+
+  const settingsGetMultipleListBut = function $settingsGetMultipleListBut() {
+    event.preventDefault();
+    console.log('multiple');
+  }
+
+  $settingsGetList.on('click', settingsGetListBut);
+  $settingsGetMultipleList.on('click', settingsGetMultipleListBut);
 
 });

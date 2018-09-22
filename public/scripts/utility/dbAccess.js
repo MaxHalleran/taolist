@@ -93,9 +93,10 @@ module.exports = function dbAccess(knex) {
     */
     getList: function getList(listid) {
       return knex
-        .select('*')
-        .from('table')
+        .from('list')
         .where('id', listid)
+        .join('item', 'item.list_id', '=', 'list.id')
+        .select('*')
     },
 
     /** changeList
@@ -116,6 +117,13 @@ module.exports = function dbAccess(knex) {
         .from('list')
         .where('id', listId)
         .del();
+    },
+
+    getItem: (itemid) => {
+      return knex
+        .select('*')
+        .from('item')
+        .where('item_id', itemid)
     },
 
     /** createItem

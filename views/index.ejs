@@ -90,6 +90,7 @@
                   <option value="PLACEHOLDER"></option>
                   <option value="PLACEHOLDER">PLACEHOLDER</option>
                </select>
+               <input type="submit" class="btn btn-primary" value="Submit a new item">
             </section>
          </div>
          <!-- Col 3 main2 R-->
@@ -157,6 +158,43 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-primary modal-register-button" value="Register">
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- This is my debug 'settings' Modal filled with buttons and functions that i needed to test properly
+Still here
+bigger comment so we dont forget to take it <output name="-->
+
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="/api/user" method="post">
+        <fieldset>
+          <legend>Max Special</legend>
+
+          <input type="text" id="listid" name="listid">
+          <label for="listid">List id</label><br/>
+          <input type="submit" class="btn btn-primary modal-settings-get-list" value="Get single list">
+
+          <input type="submit" class="btn btn-primary modal-settings-get-multiple-list" value="Get multiple lists">
+
+        </fieldset>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary modal-login-button" value="Save Changes">
       </div>
     </form>
     </div>

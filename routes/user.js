@@ -41,7 +41,7 @@ module.exports = function userRoutes(dbAccess) {
       const username = req.body.username;
       const userpass = req.body.password;
       if (!userpass || !username) {
-        req.status(401, {message: "username and password required"});
+        res.status(401, {message: "username and password required"});
       }
       let isUser;
       dbAccess.getUser(username)
@@ -51,10 +51,10 @@ module.exports = function userRoutes(dbAccess) {
           if (routeFunction.validateLogin(userpass, user[0].password)) {
             // yay they match
             req.session.user_id = user[0].id;
-            res.json('the user validation was valid');
+            res.redirect("/");
           } else {
             // error, they didn't match
-            res.json('the user validation was invalid');
+            res.redirect("/");
           }
         })
     })

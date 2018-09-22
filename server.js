@@ -20,12 +20,12 @@ const dbAccess = require('./public/scripts/utility/dbAccess')(knex);
 // Seperated Routes for each Resource
 const userRoute = require('./routes/user');
 const itemRoute = require('./routes/item');
-// const listRoutes = require('./routes/list');
+const listRoute = require('./routes/list');
 const registerRoute = require('./routes/register');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
@@ -34,28 +34,28 @@ app.use(knexLogger(knex));
 app.use(cookieSession({
   name: 'session',
   keys: ['suppalightohousegottariot'],
-  maxAge: 24 * 60 * 60 * 1000
+  maxAge: 24 * 60 * 60 * 1000,
 }));
 
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/styles", sass({
-  src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
+app.use('/styles', sass({
+  src: `${__dirname}/styles`,
+  dest: `${__dirname}/public/styles`,
   debug: true,
-  outputStyle: 'expanded'
+  outputStyle: 'expanded',
 }));
 app.use(express.static('public'));
 
 // Mount all resource routes
 app.use('/api/user', userRoute(dbAccess));
 app.use('/api/item', itemRoute(dbAccess));
-// app.use('/api/list', userRoute(knex));
+app.use('/api/list', listRoute(dbAccess));
 app.use('/api/register', registerRoute(dbAccess));
 
 app.post('/logout', (req, res) => {
   req.session = null;
-  res.redirect("/");
+  res.redirect('/');
 });
 
 // Home page
@@ -64,5 +64,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log(`Example app listening on port ${PORT}`);
 });
