@@ -134,8 +134,8 @@ $(document).ready(() => {
         itemName: $('#itemid').val(),
       }
     })
-      .then((list) => {
-        console.log(list);
+      .then((item) => {
+        console.log(item);
       })
   }
 
