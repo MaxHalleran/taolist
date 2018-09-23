@@ -52,6 +52,7 @@ module.exports = (dbAccess) => {
                       console.log('----add newUser', someoneNew);
                       // const user_id = generateRandomString();
                       req.session.user_id = someoneNew[0].user_id;
+                      req.session.username = someoneNew[0].username;
                       res.redirect('/');
                     });
                 });
