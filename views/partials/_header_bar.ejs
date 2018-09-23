@@ -1,11 +1,19 @@
 <div class="container-fluid no-padding">
    <div id="headerrow" class="rowheader">
+       <% if(cookie.user_id){ %>
          <!-- PUT(MODAL) settings -->
          <div class="header-order" id="settings" data-target="#exampleModal">
          <a style="pointer-events:none" id="asettings">Settings</a>
          <div class="hover"></div>
          </div>
 
+         <!-- POST LOGOUT -->
+          <div class="header-order" id="logout">
+              <a style="pointer-events:none" id="alogout">Logout</a>
+              <div class="hover"></div>
+          </div>
+
+        <% } else { %>
      <!-- OPEN(POST) modal-->
          <div class="header-order" id="sign-in">
          <a style="pointer-events:none" id="asign-in">Sign In</a>
@@ -16,11 +24,8 @@
         <a style="pointer-events:none" id="aregister">Create Account</a>
         <div class="hover"></div>
         </div>
-     <!-- POST LOGOUT -->
-      <div class="header-order" id="logout">
-          <a style="pointer-events:none" id="alogout">Logout</a>
-          <div class="hover"></div>
-      </div>
+
+        <% } %>
       <!-- Col 1 header L-->
       <div class="col-sm-4 panel">
       </div>

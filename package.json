@@ -13,11 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/language": "^1.2.0",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^3.0.1",
     "body-parser": "^1.18.3",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
+    "eslint": "^5.6.0",
     "express": "^4.13.4",
     "knex": "^0.11.7",
     "knex-logger": "^0.1.0",

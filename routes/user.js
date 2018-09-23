@@ -50,7 +50,7 @@ module.exports = function userRoutes(dbAccess) {
           console.log("=====user[0].pswd", user[0].password);
           if (routeFunction.validateLogin(userpass, user[0].password)) {
             // yay they match
-            req.session.user_id = user[0].id;
+            req.session.user_id = user[0].user_id;
             res.redirect("/");
           } else {
             // error, they didn't match

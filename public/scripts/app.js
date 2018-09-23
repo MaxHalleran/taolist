@@ -52,8 +52,6 @@ $(document).ready(() => {
     $.ajax({
       type: 'POST',
       url: '/logout',
-    }).then(function(){
-      console.log("post to /logout");
     })
   });
 

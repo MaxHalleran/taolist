@@ -56,7 +56,7 @@ module.exports = (dbAccess) => {
                     .then((someoneNew) => {
                       console.log('----add newUser', someoneNew);
                       // const user_id = generateRandomString();
-                      req.session.user_id = someoneNew.id;
+                      req.session.user_id = someoneNew.user_id;
                       res.status(200);
                     });
                 });

@@ -61,7 +61,9 @@ app.post('/logout', (req, res) => {
 
 // Home page
 app.get('/', (req, res) => {
-  res.render('index');
+  const cookie = req.session;
+  console.log("====cookie", cookie);
+  res.render('index', {cookie: cookie});
 });
 
 app.listen(PORT, () => {
