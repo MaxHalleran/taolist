@@ -38,3 +38,8 @@ v0.0.2 - Database skeleton constructed
 v0.0.1 - File structure created
 
 ## Focus
+
+We are currently working on setting up the routes, styling the landing page and creating the ability for the application to interact with the database.
+Tomato Tomato
+Look into READING the following example
+/Arts & Entertainment/Performing Arts/Acting & Theater
