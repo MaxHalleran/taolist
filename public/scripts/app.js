@@ -48,12 +48,18 @@ $(document).ready(() => {
   //   alert("alerttripped")
   // });
 
-  $("#logout").on("click", function(){
+  const logout = function logout() {
+    event.preventDefault();
+    console.log('logged out button clicked');
     $.ajax({
       type: 'POST',
       url: '/logout',
+    }).then(() => {
+      console.log('end of logging out');
     })
-  });
+  };
+
+  $("#logout").on("click", logout);
 
   const $newListButton = $('#newlistbut');
   const $newListName = $('#nlist');
