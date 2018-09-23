@@ -18,41 +18,7 @@
    </head>
    <body>
       <!-- HEADER BAR START -->
-      <div class="container-fluid no-padding">
-         <div id="headerrow" class="rowheader">
-               <!-- PUT(MODAL) settings -->
-               <div class="header-order" id="settings" data-target="#exampleModal">
-               <a style="pointer-events:none" id="asettings">Settings</a>
-               <div class="hover"></div>
-               </div>
-
-           <!-- OPEN(POST) modal-->
-               <div class="header-order" id="sign-in">
-               <a style="pointer-events:none" id="asign-in">Sign In</a>
-               <div class="hover"></div>
-               </div>
-           <!-- OPEN(POST) modal-->
-              <div class="header-order" id="register">
-              <a style="pointer-events:none" id="aregister">Create Account</a>
-              <div class="hover"></div>
-              </div>
-           <!-- POST LOGOUT -->
-            <div class="header-order" id="logout">
-                <a style="pointer-events:none" id="alogout">Logout</a>
-                <div class="hover"></div>
-            </div>
-            <!-- Col 1 header L-->
-            <div class="col-sm-4 panel">
-            </div>
-            <!-- Col 2 header C-->
-            <div class="col-sm-4 panel" id="overflowbreak">
-               <h1 class=text-center>Ta<span class="yinsymbol">&#x262F;</span>list</h1>
-            </div>
-            <!-- Col 3 header R-->
-            <div class="col-sm-4 panel ">
-            </div>
-         </div>
-      </div>
+      <%- include('partials/_header_bar') %>
       <!-- Button from https://sign.compass.com/ -->
       <!--- HEADER BAR END -->
       <!--- TASK TITLE AREA-->
@@ -90,6 +56,7 @@
                   <option value="PLACEHOLDER"></option>
                   <option value="PLACEHOLDER">PLACEHOLDER</option>
                </select>
+               <input type="submit" class="btn btn-primary" value="Submit a new item">
             </section>
          </div>
          <!-- Col 3 main2 R-->
@@ -157,6 +124,56 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-primary modal-register-button" value="Register">
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- This is my debug 'settings' Modal filled with buttons and functions that i needed to test properly
+Still here
+bigger comment so we dont forget to take it <output name="-->
+
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="/api/user" method="post">
+        <fieldset>
+
+          <legend>List Special</legend>
+
+          <input type="text" id="listid" name="listid">
+          <label for="listid">List id</label><br/>
+          <input type="submit" class="btn btn-primary modal-settings-get-list" value="Get single list">
+
+          <input type="submit" class="btn btn-primary modal-settings-get-multiple-list" value="Get multiple lists">
+
+        </fieldset>
+
+        <fieldset>
+
+          <legend>Item Special</legend>
+
+          <input type="text" id="itemid" name="itemid">
+          <label for="listid">Item id</label><br/>
+          <input type="submit" class="btn btn-primary modal-settings-get-item" value="get an item and it's description">
+
+          <input type="submit" class="btn btn-primary modal-settings-make-item" value="make an item in a list">
+
+        </fieldset>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary modal-login-button" value="Save Changes">
       </div>
     </form>
     </div>

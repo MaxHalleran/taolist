@@ -14,19 +14,23 @@ module.exports = function listRoutes(dbAccess) {
     })
     .post((req, res) => {
       const cookie = req.session.user_id;
-      const item = req.body;
+      const listName = req.body.listName;
       // for existing user, add item to db
       if (cookie) {
-      // add item to db
-
-      } else { // for guest, add item to guestDatabase object
-        const guestId = generateRandomString();
-        const category = categorizeItem(item);
-        guestDatabase[guestId][category].push(item);
-        res.redirect('/lists');
-      }
+      // add list to db
+        dbAccess.createList(listName, cookie)
+          .then(() => {
+            console.log('Inside list/post');
+          });
+      } //else { for guest, add item to guestDatabase object
+      //   const guestId = generateRandomString();
+      //   const category = categorizeItem(item);
+      //   guestDatabase[guestId][category].push(item);
+      //   res.redirect('/lists');
+      // }
+      res.redirect('/');
     })
-    .put('/lists/:id', (req, res) => {
+    .put((req, res) => {
       const cookie = req.session;
       const newItem = req.body;
       // for existing user, update item on db
@@ -47,8 +51,30 @@ module.exports = function listRoutes(dbAccess) {
     .delete((req, res) => {
       const item = req.params.id;
       // delete item on db
-      deleteItem();
+      // deleteItem();
     })
 
-    return router;
+  router.route('/:id?')
+    .get((req, res) => {
+      console.log('in get list id route');
+      console.log(req.params.id);
+      dbAccess.getList(req.params.id)
+        .then((list) => {
+          console.log(list);
+          res.json(list);
+        });
+    });
+
+    router.route('/user/:id?')
+      .get((req, res) => {
+        console.log('in get multiple list id route');
+        console.log(req.params.id);
+        dbAccess.getListList(req.params.id)
+          .then((list) => {
+            console.log(list);
+            res.json(list);
+          });
+      });
+
+  return router;
 };

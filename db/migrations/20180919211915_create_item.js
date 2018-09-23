@@ -1,12 +1,12 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('item', function (table) {
-    table.increments('id');
+    table.increments('item_id');
     table.integer('user_id');
     table.string('name');
-    table.integer('table_id');
+    table.integer('list_id');
 
-    table.foreign('user_id').references('id').inTable('user');
-    table.foreign('table_id').references('id').inTable('list');
+    table.foreign('user_id').references('user_id').inTable('user');
+    table.foreign('list_id').references('list_id').inTable('list');
   });
 };
 

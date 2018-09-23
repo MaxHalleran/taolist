@@ -17,14 +17,14 @@ module.exports = function dbAccess(knex) {
 * takes a username and returns all the information about that user in object format.
 * @param {Object}username
 */
-    getUser: (username) => {
+    getUser: function getUser(username) {
       return knex
         .select('*')
         .from('user')
         .where('username', username)
     },
 
-    getEmail: (email) => {
+    getEmail: function getEmail(email) {
       return knex
         .select('email')
         .from('user')
@@ -93,9 +93,20 @@ module.exports = function dbAccess(knex) {
     */
     getList: function getList(listid) {
       return knex
+        .from('item')
+        .where('list_id', listid)
         .select('*')
-        .from('table')
-        .where('id', listid)
+    },
+
+    /** getListList
+    * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
+    * @param {Number}userId
+    */
+    getListList: function getList(userid) {
+      return knex
+        .from('list')
+        .where('user_id', userid)
+        .select('*')
     },
 
     /** changeList
@@ -116,6 +127,13 @@ module.exports = function dbAccess(knex) {
         .from('list')
         .where('id', listId)
         .del();
+    },
+
+    getItem: (itemid) => {
+      return knex
+        .select('*')
+        .from('item')
+        .where('item_id', itemid)
     },
 
     /** createItem
