@@ -714,7 +714,7 @@ body {
 }
 
 .col-sm-2 {
-  width: 16.66vh;
+  /* width: 16.66vh; */
   background-color: gainsboro;
   height: 75rem;
 }
