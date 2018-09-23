@@ -51,13 +51,8 @@ module.exports = (dbAccess) => {
                     .then((someoneNew) => {
                       console.log('----add newUser', someoneNew);
                       // const user_id = generateRandomString();
-<<<<<<< HEAD
-                      req.session.user_id = someoneNew.user_id;
-                      res.status(200);
-=======
                       req.session.user_id = someoneNew[0].user_id;
                       res.redirect('/');
->>>>>>> feature/stabilizaation
                     });
                 });
             }

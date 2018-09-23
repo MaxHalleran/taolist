@@ -56,7 +56,7 @@ app.use('/api/register', registerRoute(dbAccess));
 
 app.post('/logout', (req, res) => {
   req.session = null;
-  res.redirect('/');
+  res.redirect("/");
 });
 
 // Home page

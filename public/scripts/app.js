@@ -52,7 +52,7 @@ $(document).ready(() => {
     $.ajax({
       type: 'POST',
       url: '/logout',
-    })
+   })
   });
 
   const $newListButton = $('#newlistbut');
