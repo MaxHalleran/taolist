@@ -10,15 +10,12 @@ module.exports = function itemRoutes(dbAccess) {
   router.route('/:id?')
     .get((req, res) => {
       const cookie = req.session;
-      console.log('====cookie', cookie);
       if (indexHelper.logStatus(cookie)) {
         dbAccess.getListList(cookie.user_id)
           .then((userLists) => {
-            const nameList = [];
-            console.log(userLists);
             userLists.forEach((list) => {
               console.log(list);
-              nameList.push(list.name);
+              dbAccess.getList
             });
 
             // render page
