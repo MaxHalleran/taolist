@@ -4,13 +4,14 @@
         
         <!-- POST LOGOUT -->
         <div class="header-order" id="logout">
-            <a style="pointer-events:none" id="alogout">Logout</a>
-            <div class="hover"></div>
-        </div>
+                <a style="pointer-events:none" id="alogout">Logout</a>
+                <div class="hover"></div>
+            </div>
+            
+            <form method="POST" action="/logout" style="display: inline">
+                <input type="submit" value="Logout">
+            </form> 
         
-        <form method="POST" action="/logout" style="display: inline">
-            <input type="submit" value="Logout">
-        </form> 
         
         <% } else { %>
             <!-- OPEN(POST) modal-->
