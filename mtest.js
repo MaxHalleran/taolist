@@ -21,8 +21,10 @@ client
  entities.forEach(entity => {
 
    if (entity.metadata.wikipedia_url) {
+       console.log(entity.metadata.wikipedia_url)
      return entity.metadata.wikipedia_url;
    } else {
+    console.log('bad request')
      return false;
    }
  });
@@ -31,3 +33,4 @@ client
  console.error('ERROR:', err);
 });
 }
+getWiki('McDonalds')

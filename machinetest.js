@@ -4,6 +4,7 @@ const language = require('@google-cloud/language');
 const request = require('request');
 const cheerio = require('cheerio');
 
+
 // Creates a client
 const client = new language.LanguageServiceClient();
 
@@ -21,15 +22,17 @@ client
  entities.forEach(entity => {
 
    if (entity.metadata.wikipedia_url) {
-request(entity.metadata.wikipedia_url, function (error, response, html) {
+     console.log(entity.metadata.wikipedia_url)
+request('https://en.wikipedia.org/wiki/Jogging', function (error, response, html) {
 if (!error && response.statusCode == 200) {
     const $ = cheerio.load(html);
     const txt = []
-    $('p').each(function(i, elem){
+    $('p', '.mw-parser-output').each(function(i, elem){
     txt[i] = $(this).text()
     })
     txt.join(',')
     let text = (JSON.stringify(txt).replace(/[\W_]+/g," "));
+    console.log(text)
     const document = {
         content: text,
         type: 'PLAIN_TEXT',
@@ -58,4 +61,4 @@ console.error('ERROR:', err);
 });
 }
 
-getCategory("Harry Potter")
+getCategory("Jogging")
