@@ -106,18 +106,40 @@ $(document).ready(() => {
   $settingsGetList.on('click', settingsGetListBut);
   $settingsGetMultipleList.on('click', settingsGetMultipleListBut);
 
-  const $makeItem = $('.modal-settings-make-item');
   const $getItem = $('.modal-settings-get-item');
-
-  const makeItem = function makeItem() {
-
-  }
+  const $makeItem = $('.modal-settings-make-item');
+  const $itemId = $('#itemid');
 
   const getItem = function getItem() {
+    event.preventDefault();
+    console.log('getItem button clicked');
 
+    $.ajax({
+      type: 'GET',
+      url: `/api/item/${$('#itemid').val()}`,
+    })
+      .then((list) => {
+        console.log(list);
+      })
   }
 
-  $makeItem.on('click', makeItem);
+  const makeItem = function makeItem() {
+    event.preventDefault();
+    console.log('makeItem button clicked');
+
+    $.ajax({
+      type: 'POST',
+      url: `/api/item`,
+      data: {
+        itemName: $('#itemid').val(),
+      }
+    })
+      .then((list) => {
+        console.log(list);
+      })
+  }
+
   $getItem.on('click', getItem);
+  $makeItem.on('click', makeItem);
 
 });
