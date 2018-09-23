@@ -1,34 +1,72 @@
+/* eslint-disable */
+
 'use strict';
 
 const express = require('express');
 
 const router = express.Router();
 
-module.exports = (knex, dbAccess) => {
+const bcrypt = require('bcrypt');
+
+// the adhoc guest database for users who are not logged in
+const guestDatabase = {
+  guestId: {
+    toWatch:[],
+    toEat:[],
+    toRead:[],
+    toBuy:[],
+  }
+}
+
+module.exports = function userRoutes(dbAccess) {
+  const routeFunction = require('./routeHelper/routeFunction');
+
+  async function awaitFunction(username) {
+    console.log(await dbAccess.getUser(username));
+  }
+
   router.route('/')
     .get((req, res) => {
       console.log('in get user');
-      knex
-        .select('*')
-        .from('user')
-        .then((results) => {
-          res.json(results);
-        });
-      dbAccess.getUser();
-
+      dbAccess.getUser('Alice')
+        .then((user) => {
+        res.json(user);
+      });
+      awaitFunction('Alice');
     })
+
     .post((req, res) => {
+      console.log('user/post is firing');
       // log in route. Needs to retrieve user info. We'll need the username and password from the user.
       const username = req.body.username;
       const userpass = req.body.password;
+      if (!userpass || !username) {
+        res.status(401, {message: "username and password required"});
+      }
       let isUser;
-      // we need to retrieve the users information from the database in order to compare it.
+      dbAccess.getUser(username)
+        .then((user) => {
+          console.log("------user",user);
+          console.log("=====user[0].pswd", user[0].password);
+          if (routeFunction.validateLogin(userpass, user[0].password)) {
+            // yay they match
+            console.log(user[0].user_id);
+            req.session.user_id = user[0].user_id;
+            req.session.username = user[0].username;
+            res.redirect("/");
+          } else {
+            // error, they didn't match
+            res.redirect("/");
+          }
+        })
     })
     .put((req, res) => {
-      // change stuff
+      // a route to update the users settings.
+      // This is an empty route for now
     })
     .delete((req, res) => {
-      // change stuff
+      // placeholder, doesn't do anything and isnt planned to do anything
+
     })
 
   return router;

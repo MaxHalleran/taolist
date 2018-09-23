@@ -1,10 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('ip', function (table) {
-    table.increments('id');
+    table.increments('ip_id');
     table.string('ip');
-    table.integer('user_id');
-
-    table.foreign('user_id').references('id').inTable('user');
   });
 };
 

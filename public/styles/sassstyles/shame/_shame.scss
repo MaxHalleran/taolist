@@ -1,0 +1,229 @@
+// This should be a utility class not an id
+#overflowbreak{
+    word-wrap: none;
+    word-break: keep-all
+}
+//START OF BAD BLOCK
+$h1-size: 75px;
+// Breakpoints should be a function
+@media screen and (min-width: 1024px) {
+    h1 {
+      font-size: $h1-size * 1.2;
+    }
+  }
+//H1-size broken without proper imports
+
+h1 {
+    font-size: $h1-size;
+  }
+$height-header:15rem;
+//END OF BAD BLOCK
+//Breakpoints should be a function
+@media screen and (min-width: 1024px) {
+    .rowheader {
+      height: $height-header * .75;
+    }
+  }
+//Not sure what this is being applied to
+#my-row .panel {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+//Not sure what this is being applied to
+.subheader{
+    background-color: rgba(0, 128, 0, 0.253);
+}
+/* Max made this and not sure where to impliment or how it works
+$d: 80vmin;
+
+body {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+    overflow: hidden;
+    height: 100vh;
+    background: lightslategray;
+}
+
+.☯ {
+    display: flex;
+    align-items: center;
+    width: $d; height: $d;
+    border-radius: 50%;
+
+    &:before, &:after {
+        flex: 1;
+        border: solid $d/6 transparent;
+        height: $d/6;
+        border-radius: 50%;
+        animation: a1 3s ease-in-out infinite;
+        content: ''
+    }
+
+    &:after {
+        animation-name: a2;
+    }
+}
+*/
+//THE FOLLOWING CODE NEEDS TO BE BROKEN DOWN AND SIMPLIFIED
+
+.header-order{
+    z-index:1;
+}
+
+#sign-in{
+    position:fixed;
+    top:40px;
+    right:40px;
+    height:30px;
+}
+#asign-in{
+    width: 8rem;
+}
+#asettings{
+    width: 8rem;
+}
+#settings{
+    position: fixed;
+    top:40px;
+    right: 180px;
+    height: 30px;
+}
+
+#register{
+    position: fixed;
+    top:85px;
+    right: 40px;
+    height: 30px;
+}
+#aregister{
+    width: 9rem;
+}
+#alogout{
+    width: 8rem;
+}
+#logout{
+    position: fixed;
+    top:40px;
+    left: 40px;
+    height: 30px;
+}
+#anewlistbut {
+    width: 10rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+#newlistbut{
+    position: relative;
+    top: .20rem;
+    width: 8rem;
+}
+#newlistbut:hover a{
+    position: relative;
+    top: .20rem;
+    width: 10rem;
+    height: 2rem;
+    background: rgb(255, 255, 255);
+    $color: white;
+    color: set-color($color);
+    z-index: 999;
+}
+.header-order a{
+    display:block;
+    padding: 0 15px;
+    font:16px/30px "Compass Sans",Helvetica,sans-serif;
+    color:#fff;
+    background:rgba(125,125,125,.3);
+    box-shadow:0 0 0 1px rgba(125,125,125,.6);
+    border-radius:15px
+}
+
+.header-order a#preorder-countdown{
+    width:140px;
+    white-space:nowrap;
+    text-align:center
+}
+
+.header-order .hover{
+    position:absolute;
+    top:-2px;
+    left:-2px;
+    width:calc(100% + 4px);
+    height:calc(100% + 4px);
+    overflow:hidden;
+    border-radius:15px;
+    z-index:-1
+}
+
+@keyframes headerOrderHover{
+    0%{
+        top:-4px;
+        left:0;
+    }
+    25%{
+        top:calc(100% - 4px);
+        left:0
+    }
+    50%{
+        top:calc(100% - 4px);
+        left:calc(100% - 25px)
+    }
+    75%{
+        top:-4px;
+        left:calc(100% - 10px)
+    }
+    100%{
+        top:-4px;
+        left:0
+    }
+}
+@-webkit-keyframes headerOrderHover{
+    0%{
+        top:-4px;
+        left:0;
+    }
+    25%{
+        top:calc(100% - 4px);
+        left:0
+    }
+    50%{
+        top:calc(100% - 4px);
+        left:calc(100% - 25px)
+    }
+    75%{
+        top:-4px;
+        left:calc(100% - 10px)
+    }
+    100%{
+        top:-4px;
+        left:0
+    }
+}
+
+.header-order .hover:before{
+    content:"";
+    position:absolute;
+    display:block;
+    width:25px;
+    height:25px;
+    top:0;
+    left:0;
+    background:#fff;
+    -webkit-animation:headerOrderHover linear 1s infinite;
+    animation:headerOrderHover linear 1s infinite;
+    opacity:0
+}
+
+.header-order:hover a{
+    background:#000;
+    box-shadow:0 0 0 2px rgba(125,125,125,.2)
+}
+
+.header-order:hover .hover:before{
+    opacity:1;
+    transition:.3s
+}
+//Button from https://sign.compass.com/

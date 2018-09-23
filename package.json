@@ -6,14 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "local": "nodemon --ignore public/",
+    "local": "nodemon",
     "knex": "knex"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "@google-cloud/language": "^1.2.0",
+    "bcrypt": "^3.0.1",
     "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
@@ -24,7 +26,8 @@
     "pg": "^6.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "eslint": "^5.6.0"
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,10 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('description', function (table) {
-    table.increments('id');
+    table.increments('description_id');
     table.integer('item_id');
     table.string('description');
 
-    table.foreign('item_id').references('id').inTable('item');
+    table.foreign('item_id').references('item_id').inTable('item');
   });
 };
 

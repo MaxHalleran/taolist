@@ -1,0 +1,14 @@
+@import
+  '../shame/shame';
+/* Global text color*/
+@function set-color($color) {  
+    @if (lightness( $color ) < 30) {
+      @return white;
+    }
+    @else if(lightness($color) > 70){
+      @return black;
+    }
+    @else {
+      @return grey;
+    }
+}
