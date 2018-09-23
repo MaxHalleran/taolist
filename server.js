@@ -55,13 +55,16 @@ app.use('/api/list', listRoute(dbAccess));
 app.use('/api/register', registerRoute(dbAccess));
 
 app.post('/logout', (req, res) => {
+  console.log('in logout route');
   req.session = null;
-  res.redirect('/');
+  res.redirect("/");
 });
 
 // Home page
 app.get('/', (req, res) => {
-  res.render('index');
+  const cookie = req.session;
+  console.log("====cookie", cookie);
+  res.render('index', {cookie: cookie});
 });
 
 app.listen(PORT, () => {

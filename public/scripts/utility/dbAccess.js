@@ -18,7 +18,7 @@ module.exports = function dbAccess(knex) {
 * @param {Object}username
 */
     getUser: function getUser(username) {
-      return knex
+     return knex
         .select('*')
         .from('user')
         .where('username', username)

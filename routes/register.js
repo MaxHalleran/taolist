@@ -5,6 +5,7 @@ const express = require('express');
 // const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const router = express.Router();
+const knex = require('../public/scripts/utility/client');
 
 // app.use(cookieSession({
 //   name: 'session',
@@ -12,11 +13,6 @@ const router = express.Router();
 //   maxAge: 24 * 60 * 60 * 1000,
 //   }
 // ));
-
-// Helper functions
-function generateRandomString() {
-  return Math.random().toString(20).substring(2, 8);
-}
 
 module.exports = (dbAccess) => {
   router.route('/')
@@ -54,9 +50,16 @@ module.exports = (dbAccess) => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
                       console.log('----add newUser', someoneNew);
-                      // const user_id = generateRandomString();
-                      req.session.user_id = someoneNew.id;
-                      res.status(200);
+                      // create the 6 default lists
+                      dbAccess.createList('ToWatch', someoneNew[0].user_id);
+                      dbAccess.createList('ToRead', someoneNew[0].user_id);
+                      dbAccess.createList('ToEat', someoneNew[0].user_id);
+                      dbAccess.createList('ToBuy', someoneNew[0].user_id);
+                      dbAccess.createList('other', someoneNew[0].user_id);
+                      dbAccess.createList('finished', someoneNew[0].user_id);
+                      req.session.user_id = someoneNew[0].user_id;
+                      req.session.username = someoneNew[0].username;
+                      res.redirect('/');
                     });
                 });
             }
