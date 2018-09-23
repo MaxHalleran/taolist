@@ -54,12 +54,8 @@ $(document).ready(() => {
     $.ajax({
       type: 'POST',
       url: '/logout',
-    }).then(() => {
-      console.log('end of logging out');
-    })
+   })
   };
-
-  $("#logout").on("click", logout);
 
   const $newListButton = $('#newlistbut');
   const $newListName = $('#nlist');
