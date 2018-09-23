@@ -13,11 +13,6 @@ const router = express.Router();
 //   }
 // ));
 
-// Helper functions
-function generateRandomString() {
-  return Math.random().toString(20).substring(2, 8);
-}
-
 module.exports = (dbAccess) => {
   router.route('/')
     .get((req, res) => {
@@ -55,8 +50,8 @@ module.exports = (dbAccess) => {
                     .then((someoneNew) => {
                       console.log('----add newUser', someoneNew);
                       // const user_id = generateRandomString();
-                      req.session.user_id = someoneNew.id;
-                      res.status(200);
+                      req.session.user_id = someoneNew[0].user_id;
+                      res.redirect('/');
                     });
                 });
             }
