@@ -37,6 +37,7 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
 }));
 
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/styles', sass({
