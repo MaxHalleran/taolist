@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
 const cookieSession = require('cookie-session')
 const express = require('express');
@@ -55,6 +55,7 @@ app.use('/api/list', listRoute(dbAccess));
 app.use('/api/register', registerRoute(dbAccess));
 
 app.post('/logout', (req, res) => {
+  console.log('in logout route');
   req.session = null;
   res.redirect("/");
 });

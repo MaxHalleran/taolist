@@ -5,12 +5,11 @@
 $(document).ready(() => {
   console.log('Loaded', Date());
 
-  if ($.session.user_id == null) {
-    console.log('No session');
-
-  }
   if ($.session) {
     console.log('user logged in');
-
+  } else {
+    if ($.session.user_id) {
+      console.log($.session.user_id);
+    }
   }
 });
