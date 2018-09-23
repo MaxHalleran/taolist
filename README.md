@@ -1,4 +1,4 @@
-# Tao List Smart ToDo List v0.5.0
+# Tao List Smart ToDo List v0.6.0
 
 ## Getting Started
 
@@ -17,6 +17,15 @@
 
 - Node 5.10.x or above
 - NPM 3.8.x or above
+- @google-cloud/language 1.2.0 or above
+- bcrypt
+- body-parser
+- cookie-session
+- ejs
+- express
+- knex
+- node-sass-middleware
+- PostgreSql
 
 ## Devlog
 

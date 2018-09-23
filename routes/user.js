@@ -52,6 +52,7 @@ module.exports = function userRoutes(dbAccess) {
             // yay they match
             console.log(user[0].user_id);
             req.session.user_id = user[0].user_id;
+            req.session.username = user[0].username;
             res.redirect("/");
           } else {
             // error, they didn't match
