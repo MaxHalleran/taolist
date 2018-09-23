@@ -14,8 +14,11 @@ module.exports = function itemRoutes(dbAccess) {
         dbAccess.getListList(cookie.user_id)
           .then((userLists) => {
             userLists.forEach((list) => {
-              console.log(list);
-              dbAccess.getList
+              console.log(list.list_id);
+              dbAccess.getList(list.list_id)
+                .then((item) => {
+                  console.log(item);
+                });
             });
 
             // render page
