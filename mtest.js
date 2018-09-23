@@ -6,15 +6,15 @@ const client = new language.LanguageServiceClient();
 
 
 
-module.exports = {
- getWiki: function (txt) {
-const document = {
+
+function getWiki (txt) {
+const document1 = {
  content: txt,
  type: 'PLAIN_TEXT',
 };
 
 client
-.analyzeEntities({document: document})
+.analyzeEntities({document: document1})
 .then(results => {
  const entities = results[0].entities;
 
@@ -31,4 +31,3 @@ client
  console.error('ERROR:', err);
 });
 }
-};
