@@ -6,6 +6,8 @@ const router = express.Router();
 
 const indexHelper = require('./routeHelper/indexHelper.js');
 
+// const onLoad = require('../public/scripts/pageBehaviour/onLoad.js');
+
 module.exports = function itemRoutes(dbAccess) {
   router.route('/:id?')
     .get((req, res) => {
