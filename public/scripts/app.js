@@ -98,7 +98,7 @@ $(document).ready(() => {
       url: `/api/item`,
       data: {
         itemName: $('.itemid').val(),
-        listid: $('.listid').val(),
+        listid: $('#multi-input').val(),
       }
     })
       .then((item) => {
