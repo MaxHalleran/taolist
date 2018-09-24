@@ -61,6 +61,7 @@ app.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
+// index route is mounted last
 app.use('/', indexRoute(dbAccess));
 
 app.listen(PORT, () => {

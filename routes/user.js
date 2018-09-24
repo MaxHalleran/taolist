@@ -25,7 +25,7 @@ module.exports = function userRoutes(dbAccess) {
     console.log(await dbAccess.getUser(username));
   }
 
-  router.route('/')
+  router.route('/:id?')
     .get((req, res) => {
       console.log('in get user');
       dbAccess.getUser('Alice')

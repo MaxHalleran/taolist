@@ -59,7 +59,7 @@ module.exports = (dbAccess) => {
                       dbAccess.createList('finished', someoneNew[0].user_id);
                       req.session.user_id = someoneNew[0].user_id;
                       req.session.username = someoneNew[0].username;
-                      res.redirect(`/user/${someoneNew[0].user_id}`);
+                      res.redirect('/');
                     });
                 });
             }
