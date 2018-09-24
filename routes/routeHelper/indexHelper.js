@@ -2,7 +2,8 @@
 * takes a cookie and return false if it is empty and true otherwise.
 * @param {Object}cookie
 */
-exports.logStatus = function logStatus(cookie) {
+module.exports = {
+  logStatus: function(cookie) {
   console.log('testing log status');
   if (Object.keys(cookie).length === 0) {
     console.log('Logged out: ', cookie);
@@ -13,4 +14,8 @@ exports.logStatus = function logStatus(cookie) {
     return true;
   }
   return false;
-};
+},
+
+  
+}
+
