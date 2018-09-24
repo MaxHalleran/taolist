@@ -13,14 +13,11 @@ module.exports = function itemRoutes(dbAccess) {
       if (indexHelper.logStatus(cookie)) {
         dbAccess.getListList(cookie.user_id)
           .then((userLists) => {
-            console.log(userLists);
             return userLists;
           })
           .then((userLists) => {
             dbAccess.getListByUser(cookie.user_id)
               .then((itemList) => {
-                console.log('------------------------------------------------------\n This is the main test');
-                console.log('cookie: ', cookie, 'userLists: ', userLists, 'itemList: ', itemList);
                 res.render('index', { cookie, userLists, itemList });
               });
           });

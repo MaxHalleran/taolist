@@ -22,12 +22,7 @@ module.exports = function listRoutes(dbAccess) {
           .then(() => {
             console.log('Inside list/post');
           });
-      } //else { for guest, add item to guestDatabase object
-      //   const guestId = generateRandomString();
-      //   const category = categorizeItem(item);
-      //   guestDatabase[guestId][category].push(item);
-      //   res.redirect('/lists');
-      // }
+      } 
       res.redirect('/');
     })
     .put((req, res) => {
@@ -65,16 +60,16 @@ module.exports = function listRoutes(dbAccess) {
         });
     });
 
-    router.route('/user/:id?')
-      .get((req, res) => {
-        console.log('in get multiple list id route');
-        console.log(req.params.id);
-        dbAccess.getListList(req.params.id)
-          .then((list) => {
-            console.log(list);
-            res.json(list);
-          });
-      });
+  router.route('/userList/:id?')
+    .get((req, res) => {
+      console.log('in get multiple list id route');
+      console.log(req.params.id);
+      dbAccess.getListList(req.params.id)
+        .then((list) => {
+          console.log(list);
+          res.json(list);
+        });
+    });
 
   return router;
 };
