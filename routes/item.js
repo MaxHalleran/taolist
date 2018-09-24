@@ -17,7 +17,8 @@ module.exports = function itemRoutes(dbAccess) {
     })
     .post((req, res) => {
       console.log('in make item');
-      dbAccess.createItem(req.body.itemName, 1, 1)
+      console.log(req.body.itemName, req.session.user_id, req.body.listid);
+      dbAccess.createItem(req.body.itemName, req.session.user_id, req.body.listid)
         .then((item) => {
           console.log(item);
           res.json(item);

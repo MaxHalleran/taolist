@@ -17,6 +17,7 @@ const knexLogger = require('knex-logger');
 const dbAccess = require('./public/scripts/utility/dbAccess')(knex);
 
 // Seperated Routes for each Resource
+const indexRoute = require('./routes/index');
 const userRoute = require('./routes/user');
 const itemRoute = require('./routes/item');
 const listRoute = require('./routes/list');
@@ -57,15 +58,10 @@ app.use('/api/register', registerRoute(dbAccess));
 app.post('/logout', (req, res) => {
   console.log('in logout route');
   req.session = null;
-  res.redirect("/");
+  res.redirect('/');
 });
 
-// Home page
-app.get('/', (req, res) => {
-  const cookie = req.session;
-  console.log("====cookie", cookie);
-  res.render('index', {cookie: cookie});
-});
+app.use('/', indexRoute(dbAccess));
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
