@@ -46,7 +46,7 @@ module.exports = function userRoutes(dbAccess) {
             // error, they didn't match
             res.redirect('/');
           }
-        })
+        });
     })
     .put((req, res) => {
       // a route to update the users settings.
