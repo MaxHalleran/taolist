@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <%- include('partials/_head') %>
+   </head>
+   <body>
+      <!-- HEADER BAR START -->
+      <%- include('partials/_header_bar') %>
+      <!-- Button from https://sign.compass.com/ -->
+      <!--- HEADER BAR END -->
+      <!--- TASK TITLE AREA-->
+      <div class="container-fluid no-padding">
+      <div id="mainrow2" class="rowheader">
+         <!-- Col 1 main2 L-->
+         <div class="col-sm-2 left" style="display: none;">
+         </div>
+         <!--- Col 2 main2 C-->
+         <div class="col-sm-8 center">
+           <%- include('partials/_create_list') %>
+           <%- include('partials/_accordions') %>
+         </div>
+         <!-- Col 3 main2 R-->
+         <div class="col-sm-2 right" style="display:none;">
+         </div>
+      </div>
+
+    <!--Sign In Modal -->
+    <%- include('partials/_sign_in_modal') %>
+    <!--Create Account Modal -->
+    <%- include('partials/_register_modal') %>
+
+  <!-- dont forget to remove settings -->
+  <%- include('partials/_settings_modal') %>
+  <%- include('partials/_scripts') %>
+</body>

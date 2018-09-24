@@ -1,0 +1,23 @@
+@import
+  '../shame/shame';
+.left{
+    border: .25rem;
+    border-color: black;
+    border-style: double;
+    border-right: none;    
+}
+.center{
+    border: .25rem;
+    border-color: black;
+    border-style: double;
+    border-right-style: ridge;
+    border-left-style: ridge;
+    border-right-width: .4rem;
+    border-left-width: .4rem;
+}
+.right{
+    border: .25rem;
+    border-color: black;
+    border-style: double;
+    border-left: none;    
+}
