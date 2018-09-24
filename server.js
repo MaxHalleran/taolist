@@ -22,7 +22,7 @@ const userRoute = require('./routes/user');
 const itemRoute = require('./routes/item');
 const listRoute = require('./routes/list');
 const registerRoute = require('./routes/register');
-const categorize = require('./categorize')
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 // The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -30,10 +30,6 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
-
-let outarray = []
-let userinput = 'Boston Pizza'
-categorize(userinput, outarray)
 
 app.use(cookieSession({
   name: 'session',
