@@ -65,7 +65,7 @@ module.exports = function listRoutes(dbAccess) {
         });
     });
 
-    router.route('/user/:id?')
+    router.route('/userList/:id?')
       .get((req, res) => {
         console.log('in get multiple list id route');
         console.log(req.params.id);
