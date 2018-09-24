@@ -22,7 +22,7 @@ const userRoute = require('./routes/user');
 const itemRoute = require('./routes/item');
 const listRoute = require('./routes/list');
 const registerRoute = require('./routes/register');
-
+const categorize = require('./categorize')
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 // The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -36,7 +36,9 @@ app.use(cookieSession({
   keys: ['suppalightohousegottariot'],
   maxAge: 24 * 60 * 60 * 1000,
 }));
-
+let userinput = 'Harry Potter'
+let uniq = []
+categorize(userinput, uniq)
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,6 +49,7 @@ app.use('/styles', sass({
   outputStyle: 'expanded',
 }));
 app.use(express.static('public'));
+
 
 // Mount all resource routes
 app.use('/api/user', userRoute(dbAccess));

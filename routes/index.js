@@ -4,7 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const indexHelper = require('./routeHelper/indexHelper.js');
+const indexHelper = require('./routeHelper/indexHelper');
 
 // /** logStatus
 // * takes a cookie and return false if it is empty and true otherwise.
@@ -28,9 +28,6 @@ module.exports = function itemRoutes(dbAccess) {
       if (indexHelper.logStatus(cookie)) {
         dbAccess.getListList(cookie.user_id)
           .then((userLists) => {
-            return userLists;
-          })
-          .then((userLists) => {
             dbAccess.getListByUser(cookie.user_id)
               .then((itemList) => {
                 res.render('index', { cookie, userLists, itemList });
@@ -48,7 +45,7 @@ module.exports = function itemRoutes(dbAccess) {
     })
     .delete((req, res) => {
       // to mark it inactive and move it into a 'completed' list
-    })
+    });
 
   return router;
 };
