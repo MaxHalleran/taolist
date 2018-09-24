@@ -13,12 +13,12 @@
 module.exports = function dbAccess(knex) {
   return {
 
-/** getUser
-* takes a username and returns all the information about that user in object format.
-* @param {Object}username
-*/
+    /** getUser
+    * takes a username and returns all the information about that user in object format.
+    * @param {Object}username
+    */
     getUser: function getUser(username) {
-     return knex
+      return knex
         .select('*')
         .from('user')
         .where('username', username)

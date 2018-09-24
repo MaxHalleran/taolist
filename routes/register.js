@@ -1,18 +1,9 @@
 'use strict';
 
 const express = require('express');
-// const app = express();
-// const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const knex = require('../public/scripts/utility/client');
-
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['lighthouse-labs'],
-//   maxAge: 24 * 60 * 60 * 1000,
-//   }
-// ));
 
 module.exports = (dbAccess) => {
   router.route('/')
