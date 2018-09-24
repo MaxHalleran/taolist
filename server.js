@@ -31,8 +31,14 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+<<<<<<< HEAD
 const userstuff = 'Harry Potter';
 categorize(userstuff);
+=======
+let outarray = []
+let userinput = 'Boston Pizza'
+categorize(userinput, outarray)
+>>>>>>> e9cb78c22e3a3c20909d2de6f7a7224663a4f522
 
 app.use(cookieSession({
   name: 'session',
