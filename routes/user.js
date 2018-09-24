@@ -31,7 +31,6 @@ module.exports = function userRoutes(dbAccess) {
     * @param {String}password the password that is compared and validated
     */
     .post((req, res) => {
-      console.log('user/post is firing');
       const { username } = req.body;
       const userpass = req.body.password;
       if (!userpass || !username) {
@@ -40,7 +39,6 @@ module.exports = function userRoutes(dbAccess) {
       dbAccess.getUser(username)
         .then((user) => {
           if (routeFunction.validateLogin(userpass, user[0].password)) {
-            console.log(user[0].user_id);
             req.session.user_id = user[0].user_id;
             req.session.username = user[0].username;
             res.redirect('/');

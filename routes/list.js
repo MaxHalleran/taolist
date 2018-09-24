@@ -22,12 +22,7 @@ module.exports = function listRoutes(dbAccess) {
           .then(() => {
             console.log('Inside list/post');
           });
-      } //else { for guest, add item to guestDatabase object
-      //   const guestId = generateRandomString();
-      //   const category = categorizeItem(item);
-      //   guestDatabase[guestId][category].push(item);
-      //   res.redirect('/lists');
-      // }
+      } 
       res.redirect('/');
     })
     .put((req, res) => {
