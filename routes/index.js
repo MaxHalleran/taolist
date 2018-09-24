@@ -15,6 +15,7 @@ module.exports = function itemRoutes(dbAccess) {
       if (indexHelper.logStatus(cookie)) {
         dbAccess.getListList(cookie.user_id)
           .then((userLists) => {
+<<<<<<< HEAD
             userLists.forEach((list) => {
               console.log(list.list_id);
               // onLoad.renderLists("ToWatch", ['Movie 1', 'Movie 2', 'Movie 3']);
@@ -26,6 +27,18 @@ module.exports = function itemRoutes(dbAccess) {
 
             // render page
             res.render('index', { cookie });
+=======
+            console.log(userLists);
+            return userLists;
+          })
+          .then((userLists) => {
+            dbAccess.getListByUser(cookie.user_id)
+              .then((itemList) => {
+                console.log('------------------------------------------------------\n This is the main test');
+                console.log('cookie: ', cookie, 'userLists: ', userLists, 'itemList: ', itemList);
+                res.render('index', { cookie, userLists, itemList });
+              });
+>>>>>>> 7a15bbb09f2299ce51483917923348573bbcb7ba
           });
       } else {
         res.render('index', { cookie });

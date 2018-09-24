@@ -131,7 +131,8 @@ $(document).ready(() => {
       type: 'POST',
       url: `/api/item`,
       data: {
-        itemName: $('#itemid').val(),
+        itemName: $('.itemid').val(),
+        listid: $('.listid').val(),
       }
     })
       .then((item) => {
