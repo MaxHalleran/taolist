@@ -34,13 +34,14 @@
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
     "pg": "^6.0.2",
-    "cheerio": "^1.0.0-rc.2"
+    "cheerio": "^1.0.0-rc.2",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
-    "nodemon": "^1.18.4",
     "@google-cloud/nodejs-repo-tools": "2.2.1",
     "ava": "0.25.0",
+    "eslint": "^5.6.0",
+    "nodemon": "^1.18.4",
     "semistandard": "^12.0.1"
   },
   "repository": {
