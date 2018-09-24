@@ -6,6 +6,21 @@ const router = express.Router();
 
 const indexHelper = require('./routeHelper/indexHelper.js');
 
+// /** logStatus
+// * takes a cookie and return false if it is empty and true otherwise.
+// * @param {Object}cookie
+// */
+// function logStatus(cookie) {
+//   console.log('testing log status');
+//   if (Object.keys(cookie).length === 0) {
+//     return false;
+//   }
+//   if (Object.keys(cookie).length !== 0) {
+//     return true;
+//   }
+//   return false;
+// };
+
 module.exports = function itemRoutes(dbAccess) {
   router.route('/:id?')
     .get((req, res) => {

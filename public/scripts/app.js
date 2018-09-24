@@ -91,21 +91,21 @@ $(document).ready(() => {
 
   const makeItem = function makeItem() {
     event.preventDefault();
-    console.log('makeItem button clicked');
+    // console.log($('#new-task').val());
 
     $.ajax({
       type: 'POST',
       url: `/api/item`,
       data: {
-        itemName: $('.itemid').val(),
-        listid: $('.listid').val(),
+        itemName: $('#new-task').val(),
+        // listid: $('.listid').val(),
       }
     })
       .then((item) => {
-        console.log(item);
+        // console.log(item);
       })
   }
 
   $getItem.on('click', getItem);
-  $makeItem.on('click', makeItem);
+  $(".btn-primary").on('click', makeItem);
 });
