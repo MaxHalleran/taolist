@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-const request = require('request');
+const request = require('request-promise');
 const cheerio = require('cheerio');
 const language = require('@google-cloud/language');
 const client = new language.LanguageServiceClient();
@@ -17,8 +17,7 @@ module.exports = function categorize(userInput, uniq) {
     * @param {Array}uniq takes an empty array to return filled with values
     */
     categorizeThis: function categorizeThis(userinput, uniq) {
-      let outarray = []
-      request(`https://en.wikipedia.org/wiki/${userinput}`, function (error, response, html) {
+      return request(`https://en.wikipedia.org/wiki/${userinput}`, function (error, response, html) {
         if (!error && response.statusCode == 200) {
           const $ = cheerio.load(html);
           const txt = []
@@ -37,6 +36,7 @@ module.exports = function categorize(userInput, uniq) {
         })
         .then(results => {
           const classification = results[0];
+          let outarray =[];
           classification.categories.forEach(category => {
             output = (`|| Name: ${category.name}, Confidence: ${category.confidence}`)
             if (output.includes('/Food & Drink')) {
@@ -108,7 +108,10 @@ module.exports = function categorize(userInput, uniq) {
               console.error('ERROR:', err);
             });
         }
-      });
+      })
+      .then(() => {
+        console.log('at the end of request');
+      })
     }
   }
 };

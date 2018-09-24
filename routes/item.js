@@ -20,10 +20,15 @@ module.exports = function itemRoutes(dbAccess) {
       console.log('entered item post');
 
       const outArray = [];
-      categorize.categorizeThis(req.body.itemName, outArray);
+      async function asyncFunction(input1, input2, callback) {
+        return callback(input1, input2);
+      }
 
-      console.log(outArray);
-      console.log('callCat has been called');
+      console.log(asyncFunction(req.body.itemName, outArray, categorize.categorizeThis));
+      // categorize.categorizeThis(req.body.itemName, outArray)
+      //   .then(async (resultant) => {
+      //     console.log('after calling the motherfucker ', await resultant);
+      //   });
 
       dbAccess.createItem(req.body.itemName, req.session.user_id, req.body.listid)
         .then((item) => {

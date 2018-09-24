@@ -24,7 +24,8 @@
     "knex-logger": "^0.1.0",
     "morgan": "^1.9.1",
     "node-sass-middleware": "^0.9.8",
-    "pg": "^6.0.2"
+    "pg": "^6.0.2",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.2",
