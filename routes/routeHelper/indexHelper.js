@@ -7,11 +7,9 @@ const dbAccess = require('../../public/scripts/utility/dbAccess');
 exports.logStatus = function logStatus(cookie) {
   console.log('testing log status');
   if (Object.keys(cookie).length === 0) {
-    console.log('Logged out: ', cookie);
     return false;
   }
   if (Object.keys(cookie).length !== 0) {
-    console.log('logged in: ', cookie);
     return true;
   }
   return false;
