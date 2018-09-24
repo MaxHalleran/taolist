@@ -1,18 +1,9 @@
 'use strict';
 
 const express = require('express');
-// const app = express();
-// const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const knex = require('../public/scripts/utility/client');
-
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['lighthouse-labs'],
-//   maxAge: 24 * 60 * 60 * 1000,
-//   }
-// ));
 
 module.exports = (dbAccess) => {
   router.route('/')
@@ -28,7 +19,6 @@ module.exports = (dbAccess) => {
         username: req.body.username,
         password: hashedPassword,
       };
-      console.log(newUser);
 
       // handle errors
       if (!newUser.email || !newUser.password || !newUser.username) {
@@ -37,19 +27,15 @@ module.exports = (dbAccess) => {
         // try to find user based on email, return user if found
         dbAccess.getEmail(newUser.email)
           .then((realUser) => {
-            console.log('-----realUser', realUser);
             if (realUser.length !== 0) {
-              console.log('Email taken');
               res.status(400).send('Email already registered');
               // res.redirect("/");
             } else {
               // register user
-              console.log('----newUser', newUser);
               dbAccess.saveUser(newUser)
                 .then(() => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
-                      console.log('----add newUser', someoneNew);
                       // create the 6 default lists
                       dbAccess.createList('ToWatch', someoneNew[0].user_id);
                       dbAccess.createList('ToEat', someoneNew[0].user_id);
@@ -59,7 +45,7 @@ module.exports = (dbAccess) => {
                       dbAccess.createList('finished', someoneNew[0].user_id);
                       req.session.user_id = someoneNew[0].user_id;
                       req.session.username = someoneNew[0].username;
-                      res.redirect(`/user/${someoneNew[0].user_id}`);
+                      res.redirect('/');
                     });
                 });
             }

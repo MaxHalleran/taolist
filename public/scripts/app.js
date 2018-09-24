@@ -1,32 +1,3 @@
-/* eslint-disable */
-
-// $(() => {
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/user'
-//   }).done((users) => {
-//     for(user of users) {
-//       $('<div>').text(user.username).appendTo($('body'));
-//     }
-//   });
-// });
-// $(() => {
-//   console.log('ajax fired');
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/user',
-//     data: {
-//       username: 'Alice',
-//       password: 'password',
-//     }
-//   }).done((users) => {
-//     console.log('hi')
-//     console.log(users);
-//   });
-// });
-
-
-
 $(document).ready(() => {
   const $settingsForm = $('#settings');
   $( "#settings" ).click(function() {
@@ -42,11 +13,6 @@ $(document).ready(() => {
   $( "#register" ).click(function() {
   $('#registerModal').modal()
   });
-
-  // const $logout = $('#logout');
-  // $( "#logout" ).click(function() {
-  //   alert("alerttripped")
-  // });
 
   const logout = function logout() {
     event.preventDefault();
@@ -142,5 +108,4 @@ $(document).ready(() => {
 
   $getItem.on('click', getItem);
   $makeItem.on('click', makeItem);
-
 });
