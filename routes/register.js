@@ -52,8 +52,8 @@ module.exports = (dbAccess) => {
                       console.log('----add newUser', someoneNew);
                       // create the 6 default lists
                       dbAccess.createList('ToWatch', someoneNew[0].user_id);
-                      dbAccess.createList('ToRead', someoneNew[0].user_id);
                       dbAccess.createList('ToEat', someoneNew[0].user_id);
+                      dbAccess.createList('ToRead', someoneNew[0].user_id);
                       dbAccess.createList('ToBuy', someoneNew[0].user_id);
                       dbAccess.createList('other', someoneNew[0].user_id);
                       dbAccess.createList('finished', someoneNew[0].user_id);
