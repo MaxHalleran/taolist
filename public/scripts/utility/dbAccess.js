@@ -87,6 +87,17 @@ module.exports = function dbAccess(knex) {
         });
     },
 
+    /** getListByUser
+    * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
+    * @param {Number}userid
+    */
+    getListByUser: function getList(userid) {
+      return knex
+        .from('item')
+        .where('user_id', userid)
+        .select('*')
+    },
+
     /** getList
     * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
     * @param {Number}listId
@@ -102,7 +113,7 @@ module.exports = function dbAccess(knex) {
     * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
     * @param {Number}userId
     */
-    getListList: function getList(userid) {
+    getListList: function getListList(userid) {
       return knex
         .from('list')
         .where('user_id', userid)
