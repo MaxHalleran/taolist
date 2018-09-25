@@ -97,8 +97,8 @@ $(document).ready(() => {
       type: 'POST',
       url: `/api/item`,
       data: {
-        itemName: $('#new-task').val(),
-        // listid: $('.listid').val(),
+        itemName: $('.itemid').val(),
+        listid: $('#multi-input').val(),
       }
     })
       .then((item) => {
