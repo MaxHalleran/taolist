@@ -44,16 +44,29 @@ module.exports = (dbAccess) => {
                 .then(() => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
+                      console.log(someoneNew[0].user_id);
                       // create the 6 default lists
-                      dbAccess.createList('ToWatch', someoneNew[0].user_id);
-                      dbAccess.createList('ToEat', someoneNew[0].user_id);
-                      dbAccess.createList('ToRead', someoneNew[0].user_id);
-                      dbAccess.createList('ToBuy', someoneNew[0].user_id);
-                      dbAccess.createList('other', someoneNew[0].user_id);
-                      dbAccess.createList('finished', someoneNew[0].user_id);
-                      req.session.user_id = someoneNew[0].user_id;
-                      req.session.username = someoneNew[0].username;
-                      res.redirect('/');
+                      dbAccess.createList('To Watch', someoneNew[0].user_id)
+                        .then(() => {
+                          dbAccess.createList('To Eat', someoneNew[0].user_id)
+                            .then(() => {
+                              dbAccess.createList('To Read', someoneNew[0].user_id)
+                                .then(() => {
+                                  dbAccess.createList('To Buy', someoneNew[0].user_id)
+                                    .then(() => {
+                                      dbAccess.createList('other', someoneNew[0].user_id)
+                                        .then(() => {
+                                          dbAccess.createList('finished', someoneNew[0].user_id)
+                                            .then(() => {
+                                              req.session.user_id = someoneNew[0].user_id;
+                                              req.session.username = someoneNew[0].username;
+                                              res.redirect('/');
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
                     });
                 });
             }
