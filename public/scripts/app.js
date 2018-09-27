@@ -1,7 +1,11 @@
+/* eslint no-undef: "error" */
+/* eslint-env browser */
+/* eslint-env jquery */
+
 $(document).ready(() => {
   const $settingsForm = $('#settings');
   $( "#settings" ).click(function() {
-    $('#settingsModal').modal()
+    $('#settingsModal').modal();
   });
 
   const $signInForm = $('#sign-in');
@@ -53,8 +57,8 @@ $(document).ready(() => {
     })
       .then((list) => {
         console.log(list);
-      })
-  }
+      });
+  };
 
   const settingsGetMultipleListBut = function $settingsGetMultipleListBut() {
     event.preventDefault();
@@ -66,8 +70,8 @@ $(document).ready(() => {
     })
       .then((list) => {
         console.log(list);
-      })
-  }
+      });
+  };
 
   $settingsGetList.on('click', settingsGetListBut);
   $settingsGetMultipleList.on('click', settingsGetMultipleListBut);
@@ -86,8 +90,8 @@ $(document).ready(() => {
     })
       .then((list) => {
         console.log(list);
-      })
-  }
+      });
+  };
 
   const makeItem = function makeItem() {
     event.preventDefault();
@@ -101,10 +105,10 @@ $(document).ready(() => {
         listid: $('#multi-input').val(),
       },
     })
-    .then((item) => {
-      console.log("-------",item);
-      })
-  }
+      .then((item) => {
+        console.log(item);
+      });
+  };
 
   $getItem.on('click', getItem);
   $makeItem.on('click', makeItem);

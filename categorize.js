@@ -39,70 +39,70 @@ module.exports = function categorize(userInput, uniq) {
           let outarray =[];
           classification.categories.forEach(category => {
             output = (`|| Name: ${category.name}, Confidence: ${category.confidence}`)
-            // if (output.includes('/Food & Drink')) {
-            //   outarray.push('Food')
-            // } else if (output.includes("/Arts & Entertainment")) {
-            //   outarray.push('Movie')
-            // } else if (output.includes("/Autos & Vehicles")) {
-            //   outarray.push('Buy')
-            // } else if (output.includes("/Books & Literature")) {
-            //   outarray.push('Book')
-            // } else if (output.includes("/Beauty & Fitness")) {
-            //   outarray.push('Buy')
-            // } else if (output.includes("/Business & Industrial")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Computers & Electronics")) {
-            //   outarray.push('Buy')
-            // } else if (output.includes("/Finance")) {
-            //   outarray.push('Other')
-            // } else if (output.includes("/Games")) {
-            //   outarray.push("Buy")
-            // } else if (output.includes("/Health")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Hobbies & Leisure")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Home & Garden")) {
-            //   outarray.push("Buy")
-            // } else if (output.includes("/Internet & Telecom")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Jobs & Education")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Law & Government")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/News")) {
-            //   outarray.push("Movie")
-            // } else if (output.includes("/Online Communities")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/People & Society")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Pets & Animals")) {
-            //   outarray.push("Buy")
-            // } else if (output.includes("/Real Estate")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Reference")) {
-            //   outarray.push("Book")
-            // } else if (output.includes("/Science")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Sensitive Subjects")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Shopping")) {
-            //   outarray.push("Buy")
-            // } else if (output.includes("/Sports")) {
-            //   outarray.push("Other")
-            // } else if (output.includes("/Travel")) {
-            //   outarray.push("Other")
-            // } else {
-            //   outarray.push("Naughty Naughty")
-            // }
+            if (output.includes('/Food & Drink')) {
+              outarray.push('Food')
+            } else if (output.includes("/Arts & Entertainment")) {
+              outarray.push('Movie')
+            } else if (output.includes("/Autos & Vehicles")) {
+              outarray.push('Buy')
+            } else if (output.includes("/Books & Literature")) {
+              outarray.push('Book')
+            } else if (output.includes("/Beauty & Fitness")) {
+              outarray.push('Buy')
+            } else if (output.includes("/Business & Industrial")) {
+              outarray.push("Other")
+            } else if (output.includes("/Computers & Electronics")) {
+              outarray.push('Buy')
+            } else if (output.includes("/Finance")) {
+              outarray.push('Other')
+            } else if (output.includes("/Games")) {
+              outarray.push("Buy")
+            } else if (output.includes("/Health")) {
+              outarray.push("Other")
+            } else if (output.includes("/Hobbies & Leisure")) {
+              outarray.push("Other")
+            } else if (output.includes("/Home & Garden")) {
+              outarray.push("Buy")
+            } else if (output.includes("/Internet & Telecom")) {
+              outarray.push("Other")
+            } else if (output.includes("/Jobs & Education")) {
+              outarray.push("Other")
+            } else if (output.includes("/Law & Government")) {
+              outarray.push("Other")
+            } else if (output.includes("/News")) {
+              outarray.push("Movie")
+            } else if (output.includes("/Online Communities")) {
+              outarray.push("Other")
+            } else if (output.includes("/People & Society")) {
+              outarray.push("Other")
+            } else if (output.includes("/Pets & Animals")) {
+              outarray.push("Buy")
+            } else if (output.includes("/Real Estate")) {
+              outarray.push("Other")
+            } else if (output.includes("/Reference")) {
+              outarray.push("Book")
+            } else if (output.includes("/Science")) {
+              outarray.push("Other")
+            } else if (output.includes("/Sensitive Subjects")) {
+              outarray.push("Other")
+            } else if (output.includes("/Shopping")) {
+              outarray.push("Buy")
+            } else if (output.includes("/Sports")) {
+              outarray.push("Other")
+            } else if (output.includes("/Travel")) {
+              outarray.push("Other")
+            } else {
+              outarray.push("Naughty Naughty")
+            }
           });
-          // let uniq = [...new Set(outarray)];
-          // let sorted = uniq.sort(function (a, b) {
-          //   if (a < b) return -1;
-          //   else if (a > b) return 1;
-          //       return 0;
-          //     });
-          //     console.log('inside categorize: ', uniq)
-          //     return uniq;
+          let uniq = [...new Set(outarray)];
+          let sorted = uniq.sort(function (a, b) {
+            if (a < b) return -1;
+            else if (a > b) return 1;
+                return 0;
+              });
+              console.log('inside categorize: ', uniq)
+              return uniq;
           console.log(output);
             })
             .catch(err => {

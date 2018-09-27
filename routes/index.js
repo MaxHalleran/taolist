@@ -23,6 +23,9 @@ const indexHelper = require('./routeHelper/indexHelper');
 
 module.exports = function itemRoutes(dbAccess) {
   router.route('/:id?')
+    /** index .get
+    * the only route that renders something
+    */
     .get((req, res) => {
       const cookie = req.session;
       if (indexHelper.logStatus(cookie)) {
@@ -30,6 +33,7 @@ module.exports = function itemRoutes(dbAccess) {
           .then((userLists) => {
             dbAccess.getListByUser(cookie.user_id)
               .then((itemList) => {
+                console.log("{cookie, userLists, itemList}:", cookie, "-------", userLists, "========",itemList);
                 res.render('index', { cookie, userLists, itemList });
               });
           });

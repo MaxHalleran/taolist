@@ -15,7 +15,7 @@ module.exports = function dbAccess(knex) {
 
     /** getUser
     * takes a username and returns all the information about that user in object format.
-    * @param {Object}username
+    * @param {String}username
     */
     getUser: function getUser(username) {
       return knex
@@ -24,6 +24,10 @@ module.exports = function dbAccess(knex) {
         .where('username', username)
     },
 
+    /** getEmail
+    * takes an email and checks if it's already present in the database
+    * @param {String}email
+    */
     getEmail: function getEmail(email) {
       return knex
         .select('email')
@@ -35,7 +39,6 @@ module.exports = function dbAccess(knex) {
     * takes a user object and creates a new user in the Database
     * @param {Object}user
     */
-
     saveUser: function saveUser(newUser) {
       return knex
         .from('user')
@@ -84,8 +87,8 @@ module.exports = function dbAccess(knex) {
         .from('list')
         .insert({
           name: listName,
-          // user_id: userid,
-          // list_id:listid
+          user_id: userid,
+          list_id:listid
         });
     },
 
@@ -142,6 +145,10 @@ module.exports = function dbAccess(knex) {
         .del();
     },
 
+    /** getItem
+    * takes an item id and returns an item
+    * @param {Number}item_id
+    */
     getItem: (itemid) => {
       return knex
         .select('*')
@@ -154,13 +161,12 @@ module.exports = function dbAccess(knex) {
     * @param {String}itemName
     * @param {Array}itemDescription
     */
-    createItem: function createItem(itemName, userid, listid, itemDescription) {
+    createItem: function createItem(itemName, userid) {
       return knex
         .from('item')
         .insert({
           name: itemName,
-          user_id: userid,
-          list_id: listid,
+          user_id: userid
         })
     },
 

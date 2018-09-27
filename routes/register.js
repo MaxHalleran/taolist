@@ -12,6 +12,14 @@ module.exports = (dbAccess) => {
       res.status(200);
     })
 
+    /** .post register
+    * checks if there are any empty fields then checks to see if the email is currently in the database.
+    * If it passes both tests, the users password is hashed and the user is stored in the database.
+    * 6 'default' lists are added to the user is the database.
+    * @param {String} email
+    * @param {String} username
+    * @param {String} password
+    */
     .post((req, res) => {
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       const newUser = {
@@ -37,12 +45,12 @@ module.exports = (dbAccess) => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
                       // create the 6 default lists
-                      dbAccess.createList('ToWatch', someoneNew[0].user_id, 1);
-                      dbAccess.createList('ToEat', someoneNew[0].user_id, 2);
-                      dbAccess.createList('ToRead', someoneNew[0].user_id, 3);
-                      dbAccess.createList('ToBuy', someoneNew[0].user_id, 4);
-                      dbAccess.createList('other', someoneNew[0].user_id, 5);
-                      // dbAccess.createList('finished', someoneNew[0].user_id, 6);
+                      dbAccess.createList('ToWatch', someoneNew[0].user_id);
+                      dbAccess.createList('ToEat', someoneNew[0].user_id);
+                      dbAccess.createList('ToRead', someoneNew[0].user_id);
+                      dbAccess.createList('ToBuy', someoneNew[0].user_id);
+                      dbAccess.createList('other', someoneNew[0].user_id);
+                      dbAccess.createList('finished', someoneNew[0].user_id);
                       req.session.user_id = someoneNew[0].user_id;
                       req.session.username = someoneNew[0].username;
                       res.redirect('/');

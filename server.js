@@ -4,10 +4,11 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 8081;
 const ENV = process.env.ENV || 'development';
-const cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session');
 const express = require('express');
 const bodyParser = require('body-parser');
 const sass = require('node-sass-middleware');
+
 const app = express();
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
@@ -22,7 +23,8 @@ const userRoute = require('./routes/user');
 const itemRoute = require('./routes/item');
 const listRoute = require('./routes/list');
 const registerRoute = require('./routes/register');
-const categorize = require('./categorize')
+const categorize = require('./categorize');
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 // The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -36,9 +38,10 @@ app.use(cookieSession({
   keys: ['suppalightohousegottariot'],
   maxAge: 24 * 60 * 60 * 1000,
 }));
-let userinput = 'Forrest Gump'
-let uniq = []
-categorize(userinput, uniq)
+
+const userinput = 'Harry Potter';
+const uniq = [];
+categorize(userinput, uniq);
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
