@@ -8,6 +8,9 @@ const indexHelper = require('./routeHelper/indexHelper');
 
 module.exports = function itemRoutes(dbAccess) {
   router.route('/:id?')
+    /** index .get
+    * the only route that renders something
+    */
     .get((req, res) => {
       const cookie = req.session;
       if (indexHelper.logStatus(cookie)) {

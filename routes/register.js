@@ -12,6 +12,14 @@ module.exports = (dbAccess) => {
       res.status(200);
     })
 
+    /** .post register
+    * checks if there are any empty fields then checks to see if the email is currently in the database.
+    * If it passes both tests, the users password is hashed and the user is stored in the database.
+    * 6 'default' lists are added to the user is the database.
+    * @param {String} email
+    * @param {String} username
+    * @param {String} password
+    */
     .post((req, res) => {
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       const newUser = {
