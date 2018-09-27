@@ -44,7 +44,6 @@ module.exports = (dbAccess) => {
                 .then(() => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
-                      console.log(someoneNew[0].user_id);
                       // create the 6 default lists
                       dbAccess.createList('To Watch', someoneNew[0].user_id)
                         .then(() => {

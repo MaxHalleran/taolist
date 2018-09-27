@@ -4,7 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const categorize = require('../categorize')();
+// const categorize = require('../categorize')();
 
 // categorize(input, output);
 
@@ -26,22 +26,22 @@ module.exports = function itemRoutes(dbAccess) {
     */
     .post((req, res) => {
       console.log('entered item post');
+      console.log(req.body);
 
-      const outArray = [];
-      async function asyncFunction(input1, input2, callback) {
-        return callback(input1, input2);
-      }
+      dbAccess.createItem(req.body.itemName, req.session.user_id, req.body.category)
+        .then(() => {
+          res.redirect('/');
+        });
+      // const outArray = [];
+      // async function asyncFunction(input1, input2, callback) {
+      //   return callback(input1, input2);
+      // }
 
-      console.log(asyncFunction(req.body.itemName, outArray, categorize.categorizeThis));
+      // console.log(asyncFunction(req.body.itemName, outArray, categorize.categorizeThis));
       // categorize.categorizeThis(req.body.itemName, outArray)
       //   .then(async (resultant) => {
       //     console.log('after calling the motherfucker ', await resultant);
       //   });
-
-      dbAccess.createItem(req.body.itemName, req.session.user_id, req.body.listid)
-        .then((item) => {
-          res.json(item);
-        });
     })
     /** item .put
     * edits an item, should be used to change which list the item belongs to
