@@ -37,12 +37,12 @@ module.exports = (dbAccess) => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
                       // create the 6 default lists
-                      dbAccess.createList('ToWatch', someoneNew[0].user_id);
-                      dbAccess.createList('ToEat', someoneNew[0].user_id);
-                      dbAccess.createList('ToRead', someoneNew[0].user_id);
-                      dbAccess.createList('ToBuy', someoneNew[0].user_id);
-                      dbAccess.createList('other', someoneNew[0].user_id);
-                      dbAccess.createList('finished', someoneNew[0].user_id);
+                      dbAccess.createList('ToWatch', someoneNew[0].user_id, 1);
+                      dbAccess.createList('ToEat', someoneNew[0].user_id, 2);
+                      dbAccess.createList('ToRead', someoneNew[0].user_id, 3);
+                      dbAccess.createList('ToBuy', someoneNew[0].user_id, 4);
+                      dbAccess.createList('other', someoneNew[0].user_id, 5);
+                      // dbAccess.createList('finished', someoneNew[0].user_id, 6);
                       req.session.user_id = someoneNew[0].user_id;
                       req.session.username = someoneNew[0].username;
                       res.redirect('/');

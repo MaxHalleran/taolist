@@ -99,13 +99,13 @@ $(document).ready(() => {
       data: {
         itemName: $('.itemid').val(),
         listid: $('#multi-input').val(),
-      }
+      },
     })
-      .then((item) => {
-        // console.log(item);
+    .then((item) => {
+      console.log("-------",item);
       })
   }
 
   $getItem.on('click', getItem);
-  $(".btn-primary").on('click', makeItem);
+  $makeItem.on('click', makeItem);
 });

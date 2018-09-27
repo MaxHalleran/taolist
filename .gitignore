@@ -4,3 +4,4 @@ node_modules/
 *.sqlite3
 .DS_Store
 .Taolist-c9f2db9fafe0.json
+categorize/

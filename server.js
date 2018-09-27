@@ -36,7 +36,7 @@ app.use(cookieSession({
   keys: ['suppalightohousegottariot'],
   maxAge: 24 * 60 * 60 * 1000,
 }));
-let userinput = 'Harry Potter'
+let userinput = 'Forrest Gump'
 let uniq = []
 categorize(userinput, uniq)
 
