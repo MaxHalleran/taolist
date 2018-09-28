@@ -6,6 +6,7 @@ const router = express.Router();
 const knex = require('../public/scripts/utility/client');
 
 module.exports = (dbAccess) => {
+
   router.route('/')
     .get((req, res) => {
       // opens the register page/prompt. Maybes logs something. This route is mostly for ajax.
@@ -45,33 +46,25 @@ module.exports = (dbAccess) => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
                       // create the 6 default lists
-                      dbAccess.createList('To Watch', someoneNew[0].user_id)
+                      const createWatchList = dbAccess.createList('To Watch', someoneNew[0].user_id);
+                      const createEatList = dbAccess.createList('To Eat', someoneNew[0].user_id);
+                      const createReadList = dbAccess.createList('To Read', someoneNew[0].user_id);
+                      const createBuyList = dbAccess.createList('To Buy', someoneNew[0].user_id);
+                      const createOtherList = dbAccess.createList('Other', someoneNew[0].user_id);
+                      const createFinishedList = dbAccess.createList('Finished', someoneNew[0].user_id);
+
+
+                      Promise.all([createWatchList, createEatList, createReadList, createBuyList, createOtherList, createFinishedList])
                         .then(() => {
-                          dbAccess.createList('To Eat', someoneNew[0].user_id)
-                            .then(() => {
-                              dbAccess.createList('To Read', someoneNew[0].user_id)
-                                .then(() => {
-                                  dbAccess.createList('To Buy', someoneNew[0].user_id)
-                                    .then(() => {
-                                      dbAccess.createList('other', someoneNew[0].user_id)
-                                        .then(() => {
-                                          dbAccess.createList('finished', someoneNew[0].user_id)
-                                            .then(() => {
-                                              req.session.user_id = someoneNew[0].user_id;
-                                              req.session.username = someoneNew[0].username;
-                                              res.redirect('/');
-                                            });
-                                        });
-                                    });
-                                });
-                            });
+                          req.session.user_id = someoneNew[0].user_id;
+                          req.session.username = someoneNew[0].username;
+                          res.redirect('/');
                         });
                     });
                 });
-            }
-          });
-      }
-    });
-
+            };
+        });
+    };
+  });
   return router;
 };

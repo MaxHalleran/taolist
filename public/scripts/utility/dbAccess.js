@@ -80,13 +80,15 @@ module.exports = function dbAccess(knex) {
     * takes a users id, a list name and a category and makes a list in the database
     * @param {Number}userid
     * @param {String}listName
+    * @param {Number}listid
     */
-    createList: function createList(listName, userid) {
+    createList: function createList(listName, userid, listid) {
       return knex
         .from('list')
         .insert({
           name: listName,
           user_id: userid,
+          list_id:listid
         });
     },
 
@@ -158,8 +160,9 @@ module.exports = function dbAccess(knex) {
     * takes an item name and an array of itemDescription's and adds that into the Database
     * @param {String}itemName
     * @param {Array}itemDescription
+    * @param {Array}listid
     */
-    createItem: function createItem(itemName, userid, listid, itemDescription) {
+    createItem: function createItem(itemName, userid, listid) {
       return knex
         .from('item')
         .insert({

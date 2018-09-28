@@ -3,21 +3,19 @@
      <form action="/api/item" method="POST">
       <h2>Submit a new task</h2>
       <textarea name="itemName" class="contentin itemid" placeholder="Add a new task"></textarea>
-      <select id="multi-input" name="Category">
-         <option value="1">Movie</option>
-         <option value="2">Food</option>
-         <option value="3">Book</option>
-         <option value="4">Product</option>
-         <option value="5">Other</option>
+      <select id="multi-input" name="category">
+        <% userLists.forEach(function(list) { %>
+          <option value="<%= list.list_id %>"><%= list.name %></option>
+        <% }) %>
       </select>
       <input type="submit" class="btn btn-primary" value="Submit a new item">
     </form>
    </section>
    <% } %>
-   <!-- <section class="inputsection">
+   <section class="inputsection">
       <h2>Create a new list</h2>
       <textarea class="contentin" id="nlist" placeholder="New list name"></textarea>
       <div class="header-order" id="newlistbut">
          <a style="pointer-events:none" id="anewlistbut">Create List</a>
       </div>
-   </section> -->
+   </section>

@@ -95,7 +95,7 @@ $(document).ready(() => {
 
   const makeItem = function makeItem() {
     event.preventDefault();
-    console.log('makeItem button clicked');
+    // console.log($('#new-task').val());
 
     $.ajax({
       type: 'POST',
