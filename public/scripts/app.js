@@ -3,6 +3,33 @@
 /* eslint-env jquery */
 
 $(document).ready(() => {
+  // Get the header
+  // var header = $(".container-fluid");
+  
+  // // Get the offset position of the navbar
+  // var sticky = header.outerHeight();
+
+//   $(window).scroll(function(){
+//     console.log("--------------window.pageYOffset", window.pageYOffset, "sticky", sticky);
+//     if ($(window).scrollTop() >= 240) {
+//         header.addClass('sticky');
+//     }
+//     else {
+//         header.removeClass('sticky');
+//     }
+// });
+
+//   window.onscroll = function() {myFunction()};
+// // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+// function myFunction() {
+//   if (window.pageYOffset > sticky) {
+//     header.addClass("sticky");
+//   } else {
+//     header.removeClass("sticky");
+//   }
+// }
+
+// myFunction();
   const $settingsForm = $('#settings');
   $( "#settings" ).click(function() {
     $('#settingsModal').modal();

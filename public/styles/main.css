@@ -1,4 +1,10 @@
 @charset "UTF-8";
+/* try to add sticky header */
+/* .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+} */
 #overflowbreak {
   word-wrap: none;
   word-break: keep-all;
@@ -2347,6 +2353,8 @@ body {
   animation: headerOrderHover linear 1s infinite;
   opacity: 0;
 }
+
+
 
 .header-order:hover a {
   background: #000;

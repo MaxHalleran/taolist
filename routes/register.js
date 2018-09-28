@@ -51,17 +51,18 @@ module.exports = (dbAccess) => {
                       const createEatList = dbAccess.createList('To Eat', someoneNew[0].user_id);
                       const createReadList = dbAccess.createList('To Read', someoneNew[0].user_id);
                       const createBuyList = dbAccess.createList('To Buy', someoneNew[0].user_id);
-                      const createOtherList = dbAccess.createList('other', someoneNew[0].user_id);
-                      const createFinishedList = dbAccess.createList('finished', someoneNew[0].user_id);
-
-
+                      const createOtherList = dbAccess.createList('Other', someoneNew[0].user_id);
+                      const createFinishedList = dbAccess.createList('Finished', someoneNew[0].user_id);
                       Promise.all([createWatchList, createEatList, createReadList, createBuyList, createOtherList, createFinishedList])
                         .then(() => {
                           req.session.user_id = someoneNew[0].user_id;
                           req.session.username = someoneNew[0].username;
                           res.redirect('/');
-                        });
-                    });
+                        })
+                        .catch(error => {
+                          console.log(error);
+                    })
+                  });
                 });
             };
         });
