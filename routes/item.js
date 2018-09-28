@@ -58,13 +58,33 @@ module.exports = function itemRoutes(dbAccess) {
     * @param {Number} item_id
     */
     .delete((req, res) => {
-      // to mark it inactive and move it into a 'completed' list or if already in the completed list, delete it
-      console.log('in delete item');
-      console.log('item id is: ', req.body.item_id);
-      // we have the item id, we need to check to see if the item is currently in the finished list
       dbAccess.getItem(req.body.item_id)
+
         .then((item) => {
-          console.log(item);
+          dbAccess.checkList(item[0].list_id, 'Finished')
+
+            .then((result) => {
+              console.log('the resultant array is: ', result);
+              if (result.length === 0) {
+                console.log('changing to the finished list');
+                dbAccess.getFinishedList(req.session.user_id)
+
+                  .then((finishedList) => {
+                    console.log('the finished list is: ', finishedList, 'the item_id is: ', req.body.item_id, 'the list is is:', finishedList[0].list_id);
+                    dbAccess.changeItemsList(req.body.item_id, finishedList[0].list_id)
+                      .then(() => {
+                        res.redirect('/');
+                      });
+                  });
+
+              } else {
+                console.log('deleting ', item[0].name);
+                dbAccess.deleteItem(item[0].item_id)
+                  .then(() => {
+                    res.redirect('/');
+                  });
+              }
+            });
         });
     });
 
