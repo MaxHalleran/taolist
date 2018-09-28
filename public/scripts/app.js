@@ -128,16 +128,22 @@ $(document).ready(() => {
   };
 
   const editItem = function editItem() {
+    
     console.log('editing ', this.dataset.item_id);
     $.ajax({
       type: 'PUT',
       url: '/api/item',
       data: {
         item_id: this.dataset.item_id,
+        name: this.text()
       },
     });
   };
+  const showEditForm = function(){
+    $(`#editItem${this.dataset.item_id}`).show();
+  }
+  $editButton.on('click', showEditForm);
+  $(`#editItem${item.item_id}`).on('submit', editItem);
 
   $deleteButton.on('click', deleteItem);
-  $editButton.on('click', editItem);
 });
