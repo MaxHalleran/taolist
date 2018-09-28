@@ -13,17 +13,21 @@
 module.exports = function dbAccess(knex) {
   return {
 
-/** getUser
-* takes a username and returns all the information about that user in object format.
-* @param {Object}username
-*/
+    /** getUser
+    * takes a username and returns all the information about that user in object format.
+    * @param {String}username
+    */
     getUser: function getUser(username) {
-     return knex
+      return knex
         .select('*')
         .from('user')
         .where('username', username)
     },
 
+    /** getEmail
+    * takes an email and checks if it's already present in the database
+    * @param {String}email
+    */
     getEmail: function getEmail(email) {
       return knex
         .select('email')
@@ -35,7 +39,6 @@ module.exports = function dbAccess(knex) {
     * takes a user object and creates a new user in the Database
     * @param {Object}user
     */
-
     saveUser: function saveUser(newUser) {
       return knex
         .from('user')
@@ -77,14 +80,27 @@ module.exports = function dbAccess(knex) {
     * takes a users id, a list name and a category and makes a list in the database
     * @param {Number}userid
     * @param {String}listName
+    * @param {Number}listid
     */
-    createList: function createList(listName, userid) {
+    createList: function createList(listName, userid, listid) {
       return knex
         .from('list')
         .insert({
           name: listName,
           user_id: userid,
+          list_id:listid
         });
+    },
+
+    /** getListByUser
+    * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
+    * @param {Number}userid
+    */
+    getListByUser: function getList(userid) {
+      return knex
+        .from('item')
+        .where('user_id', userid)
+        .select('*')
     },
 
     /** getList
@@ -102,7 +118,7 @@ module.exports = function dbAccess(knex) {
     * takes a list id and returns a list object with key values: name, category and an  array of item objects each with the items name and any descriptions that they have
     * @param {Number}userId
     */
-    getListList: function getList(userid) {
+    getListList: function getListList(userid) {
       return knex
         .from('list')
         .where('user_id', userid)
@@ -129,6 +145,10 @@ module.exports = function dbAccess(knex) {
         .del();
     },
 
+    /** getItem
+    * takes an item id and returns an item
+    * @param {Number}item_id
+    */
     getItem: (itemid) => {
       return knex
         .select('*')
@@ -140,8 +160,9 @@ module.exports = function dbAccess(knex) {
     * takes an item name and an array of itemDescription's and adds that into the Database
     * @param {String}itemName
     * @param {Array}itemDescription
+    * @param {Array}listid
     */
-    createItem: function createItem(itemName, userid, listid, itemDescription) {
+    createItem: function createItem(itemName, userid, listid) {
       return knex
         .from('item')
         .insert({
@@ -160,42 +181,3 @@ module.exports = function dbAccess(knex) {
     },
   };
 };
-
-//
-// const clientQuery = function clientQuery(input) {
-//   knex
-//     .where('first_name', input)
-//     .select()
-//     .from('famous_people')
-//     .then((result) => {
-//       // The first response line
-//       console.log(`Found ${result.length} person(s) by the name '${input}'`);
-//
-//       // outputting the search results. Wow, I did a search.
-//       // Dayum, that's like all of bread right there.
-//       let counter = 0;
-//       result.forEach((person) => {
-//         console.log(`- ${++counter}: ${person.first_name} ${person.last_name}, born '${person.birthdate}'`);
-//       });
-//
-//       if (result.length === 0) {
-//         console.log('We couldn\'t find anything, would you like to try again? This program is case sensitive');
-//       }
-//     })
-//     .finally(() => {
-//       knex.destroy();
-//     });
-//   return true;
-// };
-//
-//
-// // Saves a tweet to `db`
-// saveTweet: function(newTweet, callback) {
-//   db.collection('tweets').insertOne(newTweet);
-//   callback(null, true);
-// },
-//
-// getTweets: function(callback) {
-//   const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-//   db.collection('tweets').find().toArray(callback);
-// },

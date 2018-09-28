@@ -1,36 +1,11 @@
-/* eslint-disable */
-
-// $(() => {
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/user'
-//   }).done((users) => {
-//     for(user of users) {
-//       $('<div>').text(user.username).appendTo($('body'));
-//     }
-//   });
-// });
-// $(() => {
-//   console.log('ajax fired');
-//   $.ajax({
-//     method: 'GET',
-//     url: '/api/user',
-//     data: {
-//       username: 'Alice',
-//       password: 'password',
-//     }
-//   }).done((users) => {
-//     console.log('hi')
-//     console.log(users);
-//   });
-// });
-
-
+/* eslint no-undef: "error" */
+/* eslint-env browser */
+/* eslint-env jquery */
 
 $(document).ready(() => {
   const $settingsForm = $('#settings');
   $( "#settings" ).click(function() {
-    $('#settingsModal').modal()
+    $('#settingsModal').modal();
   });
 
   const $signInForm = $('#sign-in');
@@ -42,11 +17,6 @@ $(document).ready(() => {
   $( "#register" ).click(function() {
   $('#registerModal').modal()
   });
-
-  // const $logout = $('#logout');
-  // $( "#logout" ).click(function() {
-  //   alert("alerttripped")
-  // });
 
   const logout = function logout() {
     event.preventDefault();
@@ -87,8 +57,8 @@ $(document).ready(() => {
     })
       .then((list) => {
         console.log(list);
-      })
-  }
+      });
+  };
 
   const settingsGetMultipleListBut = function $settingsGetMultipleListBut() {
     event.preventDefault();
@@ -100,8 +70,8 @@ $(document).ready(() => {
     })
       .then((list) => {
         console.log(list);
-      })
-  }
+      });
+  };
 
   $settingsGetList.on('click', settingsGetListBut);
   $settingsGetMultipleList.on('click', settingsGetMultipleListBut);
@@ -120,26 +90,26 @@ $(document).ready(() => {
     })
       .then((list) => {
         console.log(list);
-      })
-  }
+      });
+  };
 
   const makeItem = function makeItem() {
     event.preventDefault();
-    console.log('makeItem button clicked');
+    // console.log($('#new-task').val());
 
     $.ajax({
       type: 'POST',
       url: `/api/item`,
       data: {
-        itemName: $('#itemid').val(),
-      }
+        itemName: $('.itemid').val(),
+        listid: $('#multi-input').val(),
+      },
     })
       .then((item) => {
         console.log(item);
-      })
-  }
+      });
+  };
 
   $getItem.on('click', getItem);
   $makeItem.on('click', makeItem);
-
 });

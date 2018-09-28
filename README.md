@@ -1,4 +1,4 @@
-# Tao List Smart ToDo List v0.6.0
+# Tao List Smart ToDo List v0.7.0
 
 ## Getting Started
 
@@ -29,6 +29,10 @@
 
 ## Devlog
 
+v 0.7.0 - Item creation is now added, users can add item to their todo lists and look through the items within their todo lists.
+
+v0.6.1 - Added dummy options for the create an item field as well as attached the make an item function to the todolists themselves.
+
 v0.5.0 - Taolist has a functioning database, user authentication, lists and item tracking. Auto categorizing of items is almost ready to be integrated.
 
 v0.0.3 - Database helper functions created
@@ -39,7 +43,7 @@ v0.0.1 - File structure created
 
 ## Focus
 
-We are currently working on setting up the routes, styling the landing page and creating the ability for the application to interact with the database.
-Tomato Tomato
-Look into READING the following example
-/Arts & Entertainment/Performing Arts/Acting & Theater
+- Refactor the categorize function to be able to integrate the categorize function into the make item route.
+- Structure edit routes for lists and items
+- Properly apply user creation paths for creating lists in the Database
+- Add finishing tasks capability

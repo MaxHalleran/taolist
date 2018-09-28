@@ -1,0 +1,21 @@
+  <% if(cookie.user_id){ %>
+   <section class="inputsection">
+     <form action="/api/item" method="POST">
+      <h2>Submit a new task</h2>
+      <textarea name="itemName" class="contentin itemid" placeholder="Add a new task"></textarea>
+      <select id="multi-input" name="category">
+        <% userLists.forEach(function(list) { %>
+          <option value="<%= list.list_id %>"><%= list.name %></option>
+        <% }) %>
+      </select>
+      <input type="submit" class="btn btn-primary" value="Submit a new item">
+    </form>
+   </section>
+   <% } %>
+   <section class="inputsection">
+      <h2>Create a new list</h2>
+      <textarea class="contentin" id="nlist" placeholder="New list name"></textarea>
+      <div class="header-order" id="newlistbut">
+         <a style="pointer-events:none" id="anewlistbut">Create List</a>
+      </div>
+   </section>

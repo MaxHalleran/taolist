@@ -10,13 +10,15 @@
       <!--- HEADER BAR END -->
       <!--- TASK TITLE AREA-->
       <div class="container-fluid no-padding">
-        <%- include('partials/_list_title') %>
       <div id="mainrow2" class="rowheader">
          <!-- Col 1 main2 L-->
          <div class="col-sm-2 left">
          </div>
          <!--- Col 2 main2 C-->
-         <%- include('partials/_create_list') %>
+         <div class="col-sm-8 center">
+           <%- include('partials/_create_item') %>
+           <%- include('partials/_accordions') %>
+         </div>
          <!-- Col 3 main2 R-->
          <div class="col-sm-2 right">
          </div>
@@ -27,10 +29,7 @@
     <!--Create Account Modal -->
     <%- include('partials/_register_modal') %>
 
-  <!-- This is my debug 'settings' Modal filled with buttons and functions that i needed to test properly
-  Still here
-  bigger comment so we dont forget to take it <output name="-->
-
+  <!-- dont forget to remove settings -->
   <%- include('partials/_settings_modal') %>
   <%- include('partials/_scripts') %>
 </body>
