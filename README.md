@@ -1,4 +1,4 @@
-# Tao List Smart ToDo List v0.7.0
+# Tao List Smart ToDo List v0.7.5
 
 ## Getting Started
 
@@ -29,6 +29,8 @@
 
 ## Devlog
 
+v0.7.5 - Delete functionality is implemented although not as smooth as possible. Fixed new user creation and database initialization. Item creation functionality implemented. Edit functionality is being implemented. Register and sign in form updated.
+
 v 0.7.0 - Item creation is now added, users can add item to their todo lists and look through the items within their todo lists.
 
 v0.6.1 - Added dummy options for the create an item field as well as attached the make an item function to the todolists themselves.
@@ -43,7 +45,11 @@ v0.0.1 - File structure created
 
 ## Focus
 
-- Refactor the categorize function to be able to integrate the categorize function into the make item route.
-- Structure edit routes for lists and items
-- Properly apply user creation paths for creating lists in the Database
-- Add finishing tasks capability
+ - Edit item functionality needs to be smoothed out, possible modal or hidden text. +0.1.0
+ - Categorize function still needs to be implemented +0.1.0
+ - Delete functionality needs to be smoothed out +0.0.5
+ - Settings button should be removed +0.0.1
+ - Header needs to be fixed (or buttons unfixed) +0.0.1
+ - General CSS changes +0.1.0
+ - Specific item descriptions +0.1.0
+ - Interact with other apis, like amazon, yelp, fandango, etc. +1.0.0

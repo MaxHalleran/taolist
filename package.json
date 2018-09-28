@@ -1,6 +1,6 @@
 {
   "name": "taolist",
-  "version": "0.7.0",
+  "version": "0.7.5",
   "description": "## Project Setup",
   "main": "server.js",
   "scripts": {
