@@ -1,4 +1,4 @@
-# Tao List Smart ToDo List v0.6.1
+# Tao List Smart ToDo List v0.7.0
 
 ## Getting Started
 
@@ -28,6 +28,8 @@
 - PostgreSql
 
 ## Devlog
+
+v 0.7.0 - Item creation is now added, users can add item to their todo lists and look through the items within their todo lists.
 
 v0.6.1 - Added dummy options for the create an item field as well as attached the make an item function to the todolists themselves.
 
