@@ -172,6 +172,19 @@ module.exports = function dbAccess(knex) {
         })
     },
 
+    /** checkList
+    * takes a list_id and checks to see if its table name matches an input pattern. Mainly used to check whether an item is in a completed list.
+    * @param {Number}list_id
+    * @param {String}tableName
+    */
+    checkList: function checkList(listid, tableName) {
+      return knex
+        .select('*')
+        .from('list')
+        .where('list_id', listid)
+        .where('list_name', tableName)
+    },
+
     /** deleteItem
     * takes an item id and changes it's state to 'completed'. Does not destroy the item,  just changes the state.
     * @param {Number}itemid

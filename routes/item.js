@@ -49,6 +49,8 @@ module.exports = function itemRoutes(dbAccess) {
     */
     .put((req, res) => {
       // to change an item
+      console.log('in edit item');
+      console.log('item id is: ', req.body.item_id);
     })
     /** item .delete
     * checks if the item is in the finished list and if not moves it into the finished list.
@@ -56,7 +58,14 @@ module.exports = function itemRoutes(dbAccess) {
     * @param {Number} item_id
     */
     .delete((req, res) => {
-      // to mark it inactive and move it into a 'completed' list
+      // to mark it inactive and move it into a 'completed' list or if already in the completed list, delete it
+      console.log('in delete item');
+      console.log('item id is: ', req.body.item_id);
+      // we have the item id, we need to check to see if the item is currently in the finished list
+      dbAccess.getItem(req.body.item_id)
+        .then((item) => {
+          console.log(item);
+        });
     });
 
   return router;
