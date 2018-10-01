@@ -203,12 +203,12 @@ module.exports = function dbAccess(knex) {
     * @param {String}property
     * @param {value}value
     */
-    changeItemsList: function changeItemsList(itemid, listid) {
+    changeItemsList: function changeItemsList(itemid, itemName) {
       return knex
         .from('item')
         .where('item_id', itemid)
         .update({
-          list_id: listid,
+          name: itemName
         })
     },
 

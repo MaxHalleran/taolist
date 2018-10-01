@@ -53,7 +53,6 @@ module.exports = (dbAccess) => {
                       const createOtherList = dbAccess.createList('Other', someoneNew[0].user_id);
                       const createFinishedList = dbAccess.createList('Finished', someoneNew[0].user_id);
 
-
                       Promise.all([createWatchList, createEatList, createReadList, createBuyList, createOtherList, createFinishedList])
                         .then(() => {
                           req.session.user_id = someoneNew[0].user_id;

@@ -22,8 +22,9 @@
                             <div class="header-order editButton" id="editButton<%= item.item_id %>" data-target="#exampleModal" data-item_id="<%= item.item_id %>">
                             <a style="pointer-events:none" id="editButton<%= item.item_id %>">Edit</a>
                             <div class="hover"></div>
-                            <form method="PUT" action="/api/item" data-item_id="<%= item.item_id %>" id="editItem<%= item.item_id %>" style="display:none">
-                            <textarea type="text" name="itemName" placeholder="<%= item.name %>"></textarea>
+                            <form method="POST" action="/api/item?_method=PUT" data-item_id="<%= item.item_id %>" class="editItemForm editItem<%= item.item_id %>" style="display:none">
+                            <textarea type="text" name="itemName" id="editItem<%= item.item_id %>" placeholder="<%= item.name %>"></textarea>
+                            <input type="hidden" name="item_id" value="<%= item.item_id %>"/>
                             <input type="submit"></input>
                             </form>
                             </div>

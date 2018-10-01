@@ -3,7 +3,9 @@
 const express = require('express');
 
 const router = express.Router();
-
+const indexHelper = require("./routeHelper/indexHelper");
+const methodOverride = require('method-override');
+router.use(methodOverride('_method'));
 // const categorize = require('../categorize')();
 
 // categorize(input, output);
@@ -15,6 +17,8 @@ module.exports = function itemRoutes(dbAccess) {
     * @param {Number} item_id the id of the item
     */
     .get((req, res) => {
+      console.log("=====id:", req.params.itemName);
+      // dbAccess.getItem(req.params.id)
       dbAccess.getItem(req.params.id)
         .then((item) => {
           res.json(item);
@@ -50,7 +54,11 @@ module.exports = function itemRoutes(dbAccess) {
     .put((req, res) => {
       // to change an item
       console.log('in edit item');
-      console.log('item id is: ', req.body.item_id);
+      console.log('=====item id is: ', req.body.item_id, 'item name is', req.body.itemName);
+      dbAccess.changeItemsList(req.body.item_id, req.body.itemName)
+      .then(() => {
+        res.redirect('/');
+      })
     })
     /** item .delete
     * checks if the item is in the finished list and if not moves it into the finished list.
