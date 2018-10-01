@@ -125,6 +125,18 @@ module.exports = function dbAccess(knex) {
         .select('*')
     },
 
+    /** getFinishedList
+    * takes a list id and returns a list id of a list ownder by the current user with the name 'Finished'
+    * @param {Number}userid
+    */
+    getFinishedList: function getFinishedList(userid) {
+      return knex
+        .from('list')
+        .where('user_id', userid)
+        .andWhere('name', 'Finished')
+        .select('*')
+    },
+
     /** changeList
     * takes a listid and an object with keys of 'name' and 'category' and change those values inside the Database
     * @param {Number}listId
@@ -132,6 +144,19 @@ module.exports = function dbAccess(knex) {
     */
     changeList: function changeList(listid, changes) {
       // going to add the ability to update a list
+    },
+
+    /** checkList
+    * takes a list_id and checks to see if its table name matches an input pattern. Mainly used to check whether an item is in a completed list.
+    * @param {Number}list_id
+    * @param {String}tableName
+    */
+    checkList: function checkList(listid, tableName) {
+      return knex
+        .select('*')
+        .from('list')
+        .where('list_id', listid)
+        .andWhere('name', tableName)
     },
 
     /** deleteList
@@ -160,13 +185,30 @@ module.exports = function dbAccess(knex) {
     * takes an item name and an array of itemDescription's and adds that into the Database
     * @param {String}itemName
     * @param {Array}itemDescription
+    * @param {Array}listid
     */
-    createItem: function createItem(itemName, userid) {
+    createItem: function createItem(itemName, userid, listid) {
       return knex
         .from('item')
         .insert({
           name: itemName,
-          user_id: userid
+          user_id: userid,
+          list_id: listid,
+        })
+    },
+
+    /** changeItemsList
+    * takes in an item_id, a value and a property and chabges the property of the item with the given value
+    * @param {Number}item_id
+    * @param {String}property
+    * @param {value}value
+    */
+    changeItemsList: function changeItemsList(itemid, itemName) {
+      return knex
+        .from('item')
+        .where('item_id', itemid)
+        .update({
+          name: itemName
         })
     },
 
@@ -175,7 +217,10 @@ module.exports = function dbAccess(knex) {
     * @param {Number}itemid
     */
     deleteItem: function deleteItem(itemid) {
-      // delete's an item
+      return knex
+        .from('item')
+        .where('item_id', itemid)
+        .del()
     },
   };
 };

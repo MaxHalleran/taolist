@@ -21,7 +21,7 @@ const indexHelper = require('./routeHelper/indexHelper');
 //   return false;
 // };
 
-module.exports = function itemRoutes(dbAccess) {
+module.exports = function indexRoutes(dbAccess) {
   router.route('/:id?')
     /** index .get
     * the only route that renders something
@@ -33,7 +33,6 @@ module.exports = function itemRoutes(dbAccess) {
           .then((userLists) => {
             dbAccess.getListByUser(cookie.user_id)
               .then((itemList) => {
-                console.log("{cookie, userLists, itemList}:", cookie, "-------", userLists, "========",itemList);
                 res.render('index', { cookie, userLists, itemList });
               });
           });

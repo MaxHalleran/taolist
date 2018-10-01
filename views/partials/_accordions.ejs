@@ -2,7 +2,7 @@
 <div class="accordion" id="accordionLists">
     <% userLists.forEach(function(list, index) { %>
         <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header" id="heading<%= index %>">
                 <h5 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
                         <%= list.name %>
@@ -14,8 +14,21 @@
                     <ol>
                         <% itemList.forEach(function(item){ %>
                             <% if(item.list_id == list.list_id){ %>
-                            <li> <%= item.name %></li>
-                        <% }}) %>
+                            <li> <a class="listItem"> <%= item.name %> </a> </li>
+                            <div class="header-order deleteButton" id="deleteButton<%= item.item_id %>" data-target="#exampleModal" data-item_id="<%= item.item_id %>">
+                            <a style="pointer-events:none" id="deleteButton<%= item.item_id %>">Done</a>
+                            <div class="hover"></div>
+                            </div>
+                            <div class="header-order editButton" id="editButton<%= item.item_id %>" data-target="#exampleModal" data-item_id="<%= item.item_id %>">
+                            <a style="pointer-events:none" id="editButton<%= item.item_id %>">Edit</a>
+                            <div class="hover"></div>
+                            <form method="POST" action="/api/item?_method=PUT" data-item_id="<%= item.item_id %>" class="editItemForm editItem<%= item.item_id %>" style="display:none">
+                            <textarea type="text" name="itemName" id="editItem<%= item.item_id %>" placeholder="<%= item.name %>"></textarea>
+                            <input type="hidden" name="item_id" value="<%= item.item_id %>"/>
+                            <input type="submit"></input>
+                            </form>
+                            </div>
+                            <% }}) %>
                     </ol>
                 </div>
             </div>

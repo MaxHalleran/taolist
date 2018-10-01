@@ -45,7 +45,6 @@ module.exports = (dbAccess) => {
                 .then(() => {
                   dbAccess.getUser(newUser.username)
                     .then((someoneNew) => {
-                      console.log(someoneNew[0].user_id);
                       // create the 6 default lists
                       const createWatchList = dbAccess.createList('To Watch', someoneNew[0].user_id);
                       const createEatList = dbAccess.createList('To Eat', someoneNew[0].user_id);
@@ -70,5 +69,3 @@ module.exports = (dbAccess) => {
   });
   return router;
 };
-            
-

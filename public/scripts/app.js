@@ -139,4 +139,26 @@ $(document).ready(() => {
 
   $getItem.on('click', getItem);
   $makeItem.on('click', makeItem);
+
+  const $deleteButton = $('.deleteButton');
+  const $editButton = $('.editButton');
+
+  const deleteItem = function deleteItem() {
+    console.log('deleting ', this.dataset.item_id);
+    $.ajax({
+      type: 'DELETE',
+      url: '/api/item',
+      data: {
+        item_id: this.dataset.item_id,
+      },
+    });
+  };
+
+  const showEditForm = function(){
+    $(`.editItem${this.dataset.item_id}`).show();
+  }
+  
+  $editButton.on('click', showEditForm);
+  
+  $deleteButton.on('click', deleteItem);
 });
